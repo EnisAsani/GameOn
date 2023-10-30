@@ -1,0 +1,6 @@
+
+
+.component-list > *:hover {
+    background-color: aliceblue;
+    cursor: pointer;
+}

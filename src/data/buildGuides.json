@@ -1,0 +1,29 @@
+[
+    {
+        "id":1,
+        "title": "Enthusiast Intel Gaming Build",
+        "imgUrl": "/images/pc_1.jpg",
+        "processor": "AMD Ryzen 7 7600X",
+        "description": "The AMD Ryzen 5 7600 provides some of the best bang for your buck. It offers 6 cores, 12 threads.",
+        "pcCase": "Lian Li LANCOOL",
+        "price": 934.74
+    },
+    {
+        "id":2,
+        "title": "Great AMD Gaming Build build",
+        "imgUrl": "/images/pc_2.jpg",
+        "processor": "AMD Ryzen 5 7600",
+        "description": "The AMD Ryzen 5 7600 provides some of the best bang for your buck. It offers 6 cores, 12 threads.",
+        "pcCase": "Lian Li LANCOOL",
+        "price": 1200.74
+    },
+    {
+        "id":3,
+        "title": "Entry level Intel Gaming Build",
+        "imgUrl": "/images/pc_3.jpg",
+        "processor": "AMD Ryzen 5 7600X",
+        "description": "The AMD Ryzen 5 7600 provides some of the best bang for your buck. It offers 6 cores, 12 threads.",
+        "pcCase": "Lian Li LANCOOL",
+        "price": 734.74
+    }
+]

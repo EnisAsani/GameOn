@@ -1,0 +1,26 @@
+[
+    {
+      "id": 1,
+      "name": "Gaming PC",
+      "price": 750,
+      "imgUrl": "/images/gaming_pc.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Gaming PC",
+      "price": 1199,
+      "imgUrl": "/images/gaming_pc.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Gaming PC",
+      "price": 999,
+      "imgUrl": "/images/gaming_pc.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Gaming PC",
+      "price": 1400,
+      "imgUrl": "/images/gaming_pc.jpg"
+    }
+  ]
