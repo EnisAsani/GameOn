@@ -4,7 +4,6 @@ import { Search } from "@mui/icons-material";
 import { InputBase } from '@mui/material';
 
 export const GraphicCard = () => {
-    const productsCount:number = 56;
     return <Box>
         <Typography variant="h4" sx={{textAlign: "center",
          background: "#495057",
@@ -16,12 +15,18 @@ export const GraphicCard = () => {
          color:"white",
           width: "100%"}}>Choose a Video Card</Typography>
         <Box sx={{width:"90%", margin: "0 auto", 
-        display:"flex", alignItems:"center", 
+        display:"flex", 
+        alignItems:{xs: "start", sm:"center"}, 
+        flexDirection:{xs: "column", sm:"row"},
         justifyContent:"space-between",
         color:"white",
         fontWeight:"100"}}>
-            <Typography variant="h6">{productsCount} Products</Typography>
-            <Box sx={{display:"flex", alignItems: "center", gap:"10px"}}>
+            <Typography sx={{padding:{xs: "10px 0 0 0"} }} variant="h6">{Math.floor(Math.random()*50) +1} Products</Typography>
+            <Box sx={{display:{xs:"none", md: "flex"}, 
+            flexDirection:"row",
+            alignItems: "center", 
+            gap:"10px",
+            }}>
             <Typography variant="h6">Sort By</Typography>
             <UnstyledSelectControlled></UnstyledSelectControlled>
             </Box>

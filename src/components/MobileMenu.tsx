@@ -41,14 +41,16 @@ export const MobileMenu = ({isMobileMenuOpen,handleMobileOpen }:any) => {
             </ListItemButton>
           </ListItem>
           </Link> */}
+          <Link to="/store" style={{textDecoration:"none"}}>
           <ListItem sx={{color:"white"}}>
             <ListItemButton>
               <ListItemIcon>
                 <Receipt sx={{color:"white"}}/>
               </ListItemIcon>
-              <ListItemText primary="Guides" />
+              <ListItemText primary="Store" />
             </ListItemButton>
           </ListItem>
+          </Link>
         </List>
     </Box>
     <div  onClick={handleMobileOpen} 

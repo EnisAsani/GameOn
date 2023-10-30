@@ -59,7 +59,8 @@ export function Navbar (props:any) {
                 sx={{color: "white"}}>
                     Products <ArrowDropUp sx={{transform: rotate, transition: "all 0.2s linear"}} />
                 </MUIButton>
-                <MUIButton sx={{color: "white"}}>Completed Builds</MUIButton>
+                <Link to="/store"><MUIButton sx={{color: "white"}}>Completed Builds</MUIButton></Link>
+                
                 </Box>
                 <Box sx={{display: "flex", alignItems: "center", gap: "20px"}}>
                 <CustomAutoComp
