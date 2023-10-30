@@ -21,7 +21,7 @@ export const MobileMenu = ({isMobileMenuOpen,handleMobileOpen }:any) => {
         <Close sx={{color:"white", display:"block",marginLeft:"auto", cursor:"pointer"}}/>
         </div>
         <List sx={{paddingTop:"0"}}>
-        <Link to="/builder" style={{textDecoration:"none"}}>
+        <Link to="/graphic-card" style={{textDecoration:"none"}}>
         <ListItem sx={{color:"white"}}>
             <ListItemButton>
               <ListItemIcon>

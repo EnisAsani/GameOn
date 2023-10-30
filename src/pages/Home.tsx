@@ -16,7 +16,7 @@ export function Home () {
             <Typography variant="h6" sx={{color:"white", textAlign:"center", padding:"15px 0"}}>We provide part selection, pricing, and compatibility guidance for<br /> 
             do-it-yourself computer builders.
             </Typography>
-            <Link style={{margin:"0 auto"}} to="/builder"><Button sx={{padding:"10px 20px", }} variant="contained" startIcon={<Handyman />}>Start Your Build</Button></Link>
+            <Link style={{margin:"0 auto"}} to="/graphic-card"><Button sx={{padding:"10px 20px", }} variant="contained" startIcon={<Handyman />}>Start Your Build</Button></Link>
           <Box sx={{display:"flex", justifyContent:"space-around", 
           flexWrap:"wrap",
           alignItems:"center", 
