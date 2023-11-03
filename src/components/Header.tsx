@@ -1,4 +1,4 @@
-import { AccountCircle, Handyman, Memory, Search } from "@mui/icons-material";
+import { AccountCircle, Handyman, Memory } from "@mui/icons-material";
 import { AppBar, Box, Divider, Switch, Toolbar, Typography } from "@mui/material"
 import { NavLink} from "react-router-dom";
 
@@ -28,7 +28,7 @@ export const Header = () => {
                 <Box sx={{display: {xs: "flex", md:"none"}, alignItems: "center", justifyContent:"space-between", gap: "20px"}}>
                     <Handyman sx={{color:"gray", "&:hover":{color:"#073b4c"}, cursor:"pointer"}}/>
                     <Memory sx={{color:"gray", "&:hover":{color:"#073b4c"}, cursor:"pointer"}}/>
-                    <Search sx={{color:"gray", "&:hover":{color:"#073b4c"}, cursor:"pointer"}}/>
+                    {/* <Search sx={{color:"gray", "&:hover":{color:"#073b4c"}, cursor:"pointer"}}/> */}
                     <AccountCircle sx={{color:"gray", "&:hover":{color:"#073b4c"}, cursor:"pointer"}}/>
                 </Box>
             </Toolbar>

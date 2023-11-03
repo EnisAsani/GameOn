@@ -1,6 +1,7 @@
 import { Button, Stack } from "react-bootstrap"
 import { useShoppingCart } from "../context/ShoppingCartContext"
 import storeItems from "../data/items.json"
+import cpus from "../data/cpus.json"
 import { formatCurrency } from "../utilities/formatCurrency"
 
 type CartItemProps = {
@@ -9,8 +10,9 @@ type CartItemProps = {
 }
 
 export function CartItem({id, quantity}: CartItemProps) {
+    const allItems = storeItems.concat(cpus)
     const {removeFromCart} = useShoppingCart()
-    const item = storeItems.find(item => item.id === id)
+    const item = allItems.find(item => item.id === id)
     if(item == null) return null
 
     return (

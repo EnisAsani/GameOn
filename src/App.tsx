@@ -7,6 +7,7 @@ import { ShoppingCartProvider } from "./context/ShoppingCartContext"
 import { Builder } from "./pages/Builder"
 import { Header } from "./components/Header"
 import { GraphicCard } from "./pages/GraphicCard"
+import { Cpus } from "./pages/Cpus"
 import { Box } from "@mui/material"
 import { MobileMenu } from "./components/MobileMenu"
 import { useState } from "react"
@@ -35,6 +36,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/builder" element={<Builder />} />
           <Route path="/graphic-card" element={<GraphicCard />} />
+          <Route path="/cpus" element={<Cpus />} />
         </Routes>
         </Box>
       </ShoppingCartProvider>

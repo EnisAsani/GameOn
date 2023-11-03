@@ -8,13 +8,11 @@ import { useState } from "react";
 import { ArrowDropUp, Handyman } from "@mui/icons-material";
 
 export function Navbar (props:any) {
-
     const [isProductDropdownOpen, setIsProductDropdownOpen] = useState<boolean>(false)
 
     function handleProductDropdown () {
         setIsProductDropdownOpen(prevState => !prevState)
     }
-
 
     const [rotateChevron, setRotateChevron] = useState(false);
 

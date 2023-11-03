@@ -1,4 +1,4 @@
-import { Close, Handyman, Receipt } from "@mui/icons-material"
+import { Close, Handyman, Memory, Receipt } from "@mui/icons-material"
 import { Box, List, ListItem, ListItemButton, ListItemIcon, ListItemText,  } from "@mui/material"
 import { Link } from "react-router-dom"
 
@@ -31,16 +31,16 @@ export const MobileMenu = ({isMobileMenuOpen,handleMobileOpen }:any) => {
             </ListItemButton>
           </ListItem>
           </Link>
-            {/* <Link to="/store" style={{textDecoration:"none"}}>
+            <Link to="/cpus" style={{textDecoration:"none"}}>
           <ListItem sx={{color:"white"}}>
             <ListItemButton>
               <ListItemIcon>
                 <Memory sx={{color:"white"}}/>
               </ListItemIcon>
-              <ListItemText primary="Products" />
+              <ListItemText primary="Cpus" />
             </ListItemButton>
           </ListItem>
-          </Link> */}
+          </Link>
           <Link to="/store" style={{textDecoration:"none"}}>
           <ListItem sx={{color:"white"}}>
             <ListItemButton>

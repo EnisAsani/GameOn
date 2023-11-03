@@ -1,0 +1,23 @@
+[
+    {
+        "id": 5,
+        "name": "AMD Ryzen 5 5600X",
+        "imgUrl":"/images/cpu_1.jpg",
+        "coreClock": "3.7 Ghz",
+        "price": 158.10
+    },
+    {
+        "id": 6,
+        "name": "AMD Ryzen 7 5800X",
+        "imgUrl":"/images/cpu_1.jpg",
+        "coreClock": "3.8 Ghz",
+        "price": 207.49
+    },
+    {
+        "id": 7,
+        "name": "Intel Core I5-12400F",
+        "imgUrl":"/images/cpu_2.png",
+        "coreClock": "2.5 Ghz",
+        "price": 147.99
+    }
+]
