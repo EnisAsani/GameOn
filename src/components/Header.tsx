@@ -1,9 +1,9 @@
 import { AccountCircle, Handyman, Memory } from "@mui/icons-material";
-import { AppBar, Box, Divider, Switch, Toolbar, Typography } from "@mui/material"
+import { AppBar, Box, Divider, Toolbar, Typography } from "@mui/material"
 import { NavLink} from "react-router-dom";
 
 export const Header = () => {
-    const label = { inputProps: { 'aria-label': 'Switch demo' } };
+    // const label = { inputProps: { 'aria-label': 'Switch demo' } };
     
     return <Box>
         <AppBar position="static" sx={{background: "#212529", padding: "0 10px"}}>
@@ -22,7 +22,7 @@ export const Header = () => {
                     <Typography variant="h6" sx={{fontSize:".9rem", 
                     cursor: "pointer",
                     "&:hover": {color: "#f72585"} }}>Register</Typography>
-                    <Switch  {...label} defaultChecked />
+                    {/* <Switch  {...label} defaultChecked /> */}
                 </Box>
                 {/* small navigation */}
                 <Box sx={{display: {xs: "flex", md:"none"}, alignItems: "center", justifyContent:"space-between", gap: "20px"}}>

@@ -11,6 +11,8 @@ import { Cpus } from "./pages/Cpus"
 import { Box } from "@mui/material"
 import { MobileMenu } from "./components/MobileMenu"
 import { useState } from "react"
+import { Cpu } from "./pages/Cpu"
+import { Gpu } from "./pages/Gpu"
 
 function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
@@ -35,8 +37,10 @@ function App() {
           <Route path="/store" element={<Store />} />
           <Route path="/about" element={<About />} />
           <Route path="/builder" element={<Builder />} />
-          <Route path="/graphic-card" element={<GraphicCard />} />
+          <Route path="/gpus" element={<GraphicCard />} />
+          <Route path="/gpu/:gpuId" element={<Gpu />} />
           <Route path="/cpus" element={<Cpus />} />
+          <Route path="/cpu/:cpuId" element={<Cpu />} />
         </Routes>
         </Box>
       </ShoppingCartProvider>

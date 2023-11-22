@@ -2,7 +2,9 @@ import { Memory } from "@mui/icons-material"
 import { Box, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from "@mui/material"
 import { Link } from "react-router-dom"
 
-export const ProductsDropdown = ({isProductDropdownOpen }:any) => {
+export const ProductsDropdown = ({isProductDropdownOpen, handleProductDropdown }:any) => {
+
+
     return <Box sx={{
         background: "#073b4c",
         width:"100%", height:"40vh", 
@@ -17,7 +19,7 @@ export const ProductsDropdown = ({isProductDropdownOpen }:any) => {
         </div> */}
         <Box>
             <List>
-                <Link style={{textDecoration:"none"}} to="cpus">
+                <Link style={{textDecoration:"none"}} to="cpus" onClick={handleProductDropdown}>
             <ListItem>
                 <ListItemButton>
                     <ListItemIcon>

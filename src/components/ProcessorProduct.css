@@ -1,0 +1,7 @@
+.processorImg {
+    transition: transform .2s ease-out;
+}
+
+.processorImg:hover {
+    transform: scale(1.5);
+}

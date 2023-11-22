@@ -2,28 +2,31 @@ import { Box, Button, Typography } from "@mui/material"
 import { useShoppingCart } from "../context/ShoppingCartContext"
 
 
-type ProductProps = {
+type ProcessorProps = {
     id:number
+    processorBrand:number
     name: string
     imgUrl: string
-    coreClock: string
+    coreClock: number
+    maxClock: number
     price: number
 }
 
-export const Product = ({ id,name, coreClock, price, imgUrl}: ProductProps) => {
+export const Product = (props: any) => {
+    const baseImgUrl = "/images/";
     const {increaseCartQuantity, getItemQuantity, decreaseItemQuantity} = useShoppingCart()
-    const itemQuantity = getItemQuantity(id)
+    const itemQuantity = getItemQuantity(props.id)
     return <Box sx={{display:{md:"flex", xs:"grid"}, 
     gridTemplateColumns: "1fr 1fr",
     alignItems:"center", justifyContent:"space-between", color:"white", padding:"5px 50px"}}>
-        <img style={{width:"50px", height:"50px"}} src={imgUrl} alt="pc-picture"/>
-        <Typography variant="h5">{name}</Typography>
-        <Typography variant="h6">{coreClock}</Typography>
-        <Typography variant="h6">$ {price.toFixed(2)}</Typography>
+        <img style={{width:"50px", height:"50px"}} src={baseImgUrl+props.imgUrl} alt="pc-picture"/>
+        <Typography variant="h5">{props.name}</Typography>
+        <Typography variant="h6">{props.coreClock}</Typography>
+        <Typography variant="h6">$ {props.price.toFixed(2)}</Typography>
         {itemQuantity === 0 ? (
-            <Button onClick={()=> increaseCartQuantity(id)} variant="contained" sx={{maxWidth:"100px", flex:"1"}}>Add</Button>
+            <Button onClick={()=> increaseCartQuantity(props.id)} variant="contained" sx={{maxWidth:"100px", flex:"1"}}>Add</Button>
         ) : (
-            <Button onClick={()=> decreaseItemQuantity(id)} color="error" variant="contained" sx={{maxWidth:"100px",  flex:"1"}}>Remove</Button>
+            <Button onClick={()=> decreaseItemQuantity(props.id)} color="error" variant="contained" sx={{maxWidth:"100px",  flex:"1"}}>Remove</Button>
         ) }
         
         

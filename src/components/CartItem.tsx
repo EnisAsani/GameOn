@@ -1,25 +1,25 @@
 import { Button, Stack } from "react-bootstrap"
 import { useShoppingCart } from "../context/ShoppingCartContext"
 import storeItems from "../data/items.json"
-import cpus from "../data/cpus.json"
 import { formatCurrency } from "../utilities/formatCurrency"
 
 type CartItemProps = {
-    id: number
+    id: string
     quantity: number
 }
 
 export function CartItem({id, quantity}: CartItemProps) {
-    const allItems = storeItems.concat(cpus)
-    const {removeFromCart} = useShoppingCart()
+    const {removeFromCart, processorsData, graphicsData} = useShoppingCart()
+    const allItems = storeItems.concat(processorsData, graphicsData)
     const item = allItems.find(item => item.id === id)
+    const baseImgUrl = "/images/"
     if(item == null) return null
 
     return (
         <Stack 
         className="d-flex align-items-center"
         direction="horizontal" gap={2}>
-            <img src={item.imgUrl} style={{width: "125px", 
+            <img src={item.imgUrl.includes("images") ? item.imgUrl : baseImgUrl+item.imgUrl} style={{width: "125px", 
         height: "75px", objectFit: "cover"}}/>
         <div className="me-auto">
             <div>

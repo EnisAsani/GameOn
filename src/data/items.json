@@ -1,24 +1,24 @@
 [
     {
-      "id": 1,
+      "id": "asdasd12312",
       "name": "Gaming PC",
       "price": 750,
       "imgUrl": "/images/gaming_pc.jpg"
     },
     {
-      "id": 2,
+      "id": "asdad4324234",
       "name": "Gaming PC",
       "price": 1199,
       "imgUrl": "/images/gaming_pc.jpg"
     },
     {
-      "id": 3,
+      "id": "Asdasd22",
       "name": "Gaming PC",
       "price": 999,
       "imgUrl": "/images/gaming_pc.jpg"
     },
     {
-      "id": 4,
+      "id": "14sfasf14",
       "name": "Gaming PC",
       "price": 1400,
       "imgUrl": "/images/gaming_pc.jpg"

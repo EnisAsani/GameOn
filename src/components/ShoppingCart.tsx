@@ -3,7 +3,7 @@ import { useShoppingCart } from "../context/ShoppingCartContext";
 import { CartItem } from "./CartItem";
 import { formatCurrency } from "../utilities/formatCurrency";
 import storeItems from "../data/items.json"
-import cpus from "../data/cpus.json"
+import { Button } from "@mui/material";
 
 
 type ShoppingCartProps = {
@@ -11,8 +11,8 @@ type ShoppingCartProps = {
 }
 
 export function ShoppingCart({isOpen}: ShoppingCartProps) {
-    const {closeCart, cartItems } = useShoppingCart()
-    const allItems = storeItems.concat(cpus)
+    const {closeCart, cartItems,graphicsData, processorsData } = useShoppingCart()
+    const allItems = storeItems.concat(processorsData, graphicsData)
     return <Offcanvas onHide={()=> closeCart()} show={isOpen} placement="end">
         <Offcanvas.Header closeButton>
            <Offcanvas.Title>Cart</Offcanvas.Title> 
@@ -28,6 +28,9 @@ export function ShoppingCart({isOpen}: ShoppingCartProps) {
                     return total + (item?.price || 0) * current.quantity
                 },0)
                 )}
+             </div>
+             <div style={{marginLeft:"auto"}}>
+             <Button variant="contained">Checkout</Button>
              </div>
             </Stack>
         </Offcanvas.Body>

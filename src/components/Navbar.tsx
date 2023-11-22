@@ -6,8 +6,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { ProductsDropdown } from "./ProductsDropdown";
 import { useState } from "react";
 import { ArrowDropUp, Handyman } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
 
 export function Navbar (props:any) {
+    const navigate = useNavigate()
     const [isProductDropdownOpen, setIsProductDropdownOpen] = useState<boolean>(false)
 
     function handleProductDropdown () {
@@ -35,15 +37,21 @@ export function Navbar (props:any) {
         }
     })
 
-    const {openCart, cartQuantity} = useShoppingCart()
-    const top100Films = [
-        { label: 'The Shawshank Redemption', year: 1994 },
-        { label: 'The Godfather', year: 1972 },
-        { label: 'The Godfather: Part II', year: 1974 },
-        { label: 'The Dark Knight', year: 2008 },
-        { label: '12 Angry Men', year: 1957 },
-        { label: "Schindler's List", year: 1993 },
-        { label: 'Pulp Fiction', year: 1994 },]
+    const {openCart, cartQuantity, graphicsData, processorsData} = useShoppingCart()
+    const mergedData = [...graphicsData.map((item:any) => ({label: item.name, ...item})), 
+        ...processorsData.map((item:any) => ({label: item.name, ...item}))
+    ]
+    
+    const [selectedValue, setSelectedValue] = useState<any>(null)
+    
+    // const top100Films = [
+    //     { label: 'The Shawshank Redemption', year: 1994 },
+    //     { label: 'The Godfather', year: 1972 },
+    //     { label: 'The Godfather: Part II', year: 1974 },
+    //     { label: 'The Dark Knight', year: 2008 },
+    //     { label: '12 Angry Men', year: 1957 },
+    //     { label: "Schindler's List", year: 1993 },
+    //     { label: 'Pulp Fiction', year: 1994 },]
     return <Box sx={{position: "relative"}}>
                 <AppBar position="static" sx={{background: "#073b4c",padding: "0 10px" }}>
                     <Toolbar sx={{display: "flex",justifyContent:"space-between", alignItems: "center"}}>
@@ -63,9 +71,21 @@ export function Navbar (props:any) {
                 <Box sx={{display: "flex", alignItems: "center", gap: "20px"}}>
                 <CustomAutoComp
                 sx={{width: "200px"}}
-                
+                value={selectedValue}
+                onChange={(event:any, newValue: any) =>  {
+                    setSelectedValue(newValue) 
+                    if(newValue) {
+                    const foundItem = mergedData.find(item => item.name === newValue.name)
+                    if(foundItem.maxClock) {
+                        navigate(`/cpu/${foundItem.id}`)
+                    } else {
+                        navigate(`/gpu/${foundItem.id}`)
+                    }
+                   }
+                }
+                }
                     freeSolo
-                 options={top100Films}
+                 options={mergedData}
                     renderInput={(params) => <TextField {...params} label="Search..." />}
                 />
             {cartQuantity > 0 && (

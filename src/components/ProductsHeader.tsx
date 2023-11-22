@@ -6,9 +6,11 @@ import { InputBase } from '@mui/material';
 
 type ProductsHeaderProps = {
     title: string
+    handleInput: (value:string)=> void
+    productsAvailable: number
 }
 
-export const ProductsHeader = ({title}: ProductsHeaderProps) => {
+export const ProductsHeader = ({title, handleInput,productsAvailable}: ProductsHeaderProps) => {
    return <Box>
         <Typography variant="h4" sx={{textAlign: "center",
          background: "#495057",
@@ -26,7 +28,7 @@ export const ProductsHeader = ({title}: ProductsHeaderProps) => {
         justifyContent:"space-between",
         color:"white",
         fontWeight:"100"}}>
-            <Typography sx={{padding:{xs: "10px 0 0 0"} }} variant="h6">{Math.floor(Math.random()*50) +1} Products</Typography>
+            <Typography sx={{padding:{xs: "10px 0 0 0", sm:"0"} }} variant="h6">{productsAvailable} Products</Typography>
             <Box sx={{display:{xs:"none", md: "flex"}, 
             flexDirection:"row",
             alignItems: "center", 
@@ -38,6 +40,7 @@ export const ProductsHeader = ({title}: ProductsHeaderProps) => {
             <Box sx={{display:"flex", alignItems: "center", gap:"10px", padding:"20px 0"}}>
                 <Search sx={{cursor:"pointer"}}/>
                 <InputBase 
+                onChange={(e)=>handleInput(e.currentTarget.value)}
                 sx={{border: "none",
                 padding:"0 0 0 10px",
                 color:"white",

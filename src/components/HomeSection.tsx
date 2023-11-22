@@ -1,32 +1,32 @@
 import { Box } from "@mui/material"
-import { PcCard } from "./PcCard"
+import { ProcessorProduct } from "./ProcessorProduct"
 
-type PcCardArray = {
-    data: PcCardProps[]
+type processorArray = {
+    data: ProcessorProps[]
 }
 
-type PcCardProps = {
-        id:number
-        title: string
-        imgUrl: string
-        processor: string
-        description: string
-        pcCase: string
-        price: number
+type ProcessorProps = {
+    id:number
+    processorBrand:number
+    name: string
+    imgUrl: string
+    coreClock: number
+    maxClock: number
+    price: number
 }
 
 
-export const HomeSection = ({data}: PcCardArray) => {
+export const HomeSection = ({data}: processorArray) => {
     
-    return <Box sx={{display:"flex", justifyContent:"center", 
-    flexWrap:"wrap",
-    alignItems:"center", 
-    minHeight:"60vh",
+    return <Box sx={{display:"grid",
+    gridTemplateColumns:"repeat(auto-fit, minmax(200px, 300px))",
+    justifyContent:"center",
+    // minHeight:"60vh",
     margin:"25px auto",
     gap:"30px",
     width:"80%"}}>
-        {data.map((item:PcCardProps) => (
-            <PcCard key={item.id} {...item}/>
+        {data.map((item:ProcessorProps) => (
+            <ProcessorProduct key={item.id} {...item}/>
         ))}
     </Box>
 }

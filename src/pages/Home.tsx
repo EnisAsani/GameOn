@@ -2,14 +2,58 @@ import "./Home.css"
 import { Box, Button, Typography } from "@mui/material";
 import { Handyman } from "@mui/icons-material";
 import { Link } from "react-router-dom";
-import buildGuides from "../data/buildGuides.json"
-import { PcCard } from "../components/PcCard";
-
+// import buildGuides from "../data/buildGuides.json"
+// import { PcCard } from "../components/PcCard";
+// import axios from "axios";
 import { HomeSection } from "../components/HomeSection";
+// import { useEffect, useState } from "react";
+import { GraphicCardProduct } from "../components/GraphicCardProduct";
+import { useShoppingCart } from "../context/ShoppingCartContext";
+
 export function Home () {
 
-   
+    type GraphicCardProps = {
+        id:number
+        brand:number
+        name: string
+        imgUrl: string
+        memory: number
+        price: number
+    }
 
+    // type ProcessorProps = {
+    //     id:number
+    //     processorBrand:number
+    //     name: string
+    //     imgUrl: string
+    //     coreClock: number
+    //     maxClock: number
+    //     price: number
+    // }
+
+    const { graphicsData, processorsData} = useShoppingCart()
+    
+    // const [graphicsApi, setGraphicsApi] = useState<GraphicCardProps[]>([])
+    // const [processorsApi, setProcessorsApi] = useState<ProcessorProps[]>([])
+
+    // const fetchGraphics = async () => {
+    //    const response = await axios.get("https://localhost:7122/api/graphiccard/getall")
+    // //    console.log(response.data);
+    //    setGraphicsApi(response.data)
+    // }
+
+    // const fetchProcessors = async () => {
+    //     const response = await axios.get("https://localhost:7122/api/processor/getall")
+    //     // console.log(response.data);
+    //     setProcessorsApi(response.data)
+        
+    // }
+
+    // useEffect(()=> {
+    //    fetchGraphics()
+    //    fetchProcessors()
+    // }
+    //     ,[])
 
 
     return <Box sx={{display: "flex", flexDirection:"column", 
@@ -25,12 +69,12 @@ export function Home () {
           <Box sx={{display:"flex", justifyContent:"center", 
           flexWrap:"wrap",
           alignItems:"center", 
-          minHeight:"60vh",
-          margin:"25px auto",
+          minHeight:"50vh",
+          margin:"15px auto",
           gap:"30px",
           width:"80%"}}>
-                {buildGuides.map(guide => (
-                    <PcCard key={guide.id} {...guide}/>
+                {graphicsData?.slice(0,3).map((guide: GraphicCardProps) => (
+                    <GraphicCardProduct key={guide.id} {...guide}/>
                 ))}
           </Box>
           <Typography variant="h3" sx={{color:"white", textAlign:"center", fontSize:{xs: "1.5rem", sm:"2.5rem"}}}>Completed Builds
@@ -42,7 +86,7 @@ export function Home () {
                 <Button sx={{padding:"10px 20px", }} variant="contained" startIcon={<Handyman />}>
                     View Completed Builds</Button>
                 </Link>
-          <HomeSection data={buildGuides}/>
+          <HomeSection data={processorsData || []}/>
         </Box>
     
 }

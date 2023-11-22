@@ -1,0 +1,8 @@
+
+.graphicImg {
+    transition: 0.2s ease-out;
+}
+
+.graphicImg:hover {
+    transform: scale(1.5);
+}
