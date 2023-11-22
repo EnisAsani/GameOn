@@ -6,7 +6,7 @@ type processorArray = {
 }
 
 type ProcessorProps = {
-    id:number
+    id:string
     processorBrand:number
     name: string
     imgUrl: string
