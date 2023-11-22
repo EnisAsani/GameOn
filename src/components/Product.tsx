@@ -2,15 +2,7 @@ import { Box, Button, Typography } from "@mui/material"
 import { useShoppingCart } from "../context/ShoppingCartContext"
 
 
-type ProcessorProps = {
-    id:number
-    processorBrand:number
-    name: string
-    imgUrl: string
-    coreClock: number
-    maxClock: number
-    price: number
-}
+
 
 export const Product = (props: any) => {
     const baseImgUrl = "/images/";

@@ -13,7 +13,7 @@ import { useShoppingCart } from "../context/ShoppingCartContext";
 export function Home () {
 
     type GraphicCardProps = {
-        id:number
+        id:string
         brand:number
         name: string
         imgUrl: string

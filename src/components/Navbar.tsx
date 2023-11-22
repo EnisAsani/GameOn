@@ -74,7 +74,7 @@ export function Navbar (props:any) {
                 value={selectedValue}
                 onChange={(event:any, newValue: any) =>  {
                     setSelectedValue(newValue) 
-                    if(newValue) {
+                    if(newValue && event) {
                     const foundItem = mergedData.find(item => item.name === newValue.name)
                     if(foundItem.maxClock) {
                         navigate(`/cpu/${foundItem.id}`)
