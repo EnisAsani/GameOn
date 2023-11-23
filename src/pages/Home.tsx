@@ -70,7 +70,7 @@ export function Home () {
           flexWrap:"wrap",
           alignItems:"center", 
           minHeight:"50vh",
-          margin:"0 auto",
+          margin:{xs:"20px auto", sm: "0 auto"},
           gap:"30px",
           width:"80%"}}>
                 {graphicsData?.slice(0,3).map((guide: GraphicCardProps) => (
