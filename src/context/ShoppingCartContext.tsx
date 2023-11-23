@@ -56,21 +56,19 @@ export function useShoppingCart() {
 
 export function ShoppingCartProvider({children} : ShoppingCartProviderProps) {
 
-    const [graphicsApi, setGraphicsApi] = useState<GraphicCardProps[]>([])
-    const [processorsApi, setProcessorsApi] = useState<ProcessorProps[]>([])
+    const [graphicsApi, setGraphicsApi] = useState<GraphicCardProps[]>(()=>[])
+    const [processorsApi, setProcessorsApi] = useState<ProcessorProps[]>(()=>[])
 
     const fetchGraphics = async () => {
         const response = await axios.get("https://gameonapi.azurewebsites.net/api/graphiccard/getall")
-     //    console.log(response.data);
+        // const response = await axios.get('https://localhost:7122/api/GraphicCard/getall')
         setGraphicsApi(response.data)
-        // setMergededData((prevState:any)=> ([...prevState, ...response.data.map((item:GraphicCardProps) => ({label: item.name, ...item}))]))
      }
  
      const fetchProcessors = async () => {
          const response = await axios.get("https://gameonapi.azurewebsites.net/api/processor/getall")
-         // console.log(response.data);
+        //  const response = await axios.get('https://localhost:7122/api/processor/getall')
          setProcessorsApi(response.data)
-        //  setMergededData((prevState:any)=> ([...prevState, ...response.data.map((item:ProcessorProps) => ({label: item.name, ...item}))]))
      }
 
     
