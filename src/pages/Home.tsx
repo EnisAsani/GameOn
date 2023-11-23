@@ -65,12 +65,12 @@ export function Home () {
             <Typography variant="h6" sx={{color:"white", textAlign:"center", padding:"15px 0"}}>We provide part selection, pricing, and compatibility guidance for<br /> 
             do-it-yourself computer builders.
             </Typography>
-            <Link style={{margin:"0 auto"}} to="/graphic-card"><Button sx={{padding:"10px 20px", }} variant="contained" startIcon={<Handyman />}>Start Your Build</Button></Link>
+            <Link style={{margin:"0 auto"}} to="/gpus"><Button sx={{padding:"10px 20px", }} variant="contained" startIcon={<Handyman />}>View All Cards</Button></Link>
           <Box sx={{display:"flex", justifyContent:"center", 
           flexWrap:"wrap",
           alignItems:"center", 
           minHeight:"50vh",
-          margin:"15px auto",
+          margin:"0 auto",
           gap:"30px",
           width:"80%"}}>
                 {graphicsData?.slice(0,3).map((guide: GraphicCardProps) => (
@@ -82,11 +82,11 @@ export function Home () {
             <Typography variant="h6" sx={{color:"white", textAlign:"center", padding:"15px 0"}}>We provide part selection, pricing, and compatibility guidance for<br /> 
             do-it-yourself computer builders.
             </Typography>
-            <Link style={{margin:"0 auto"}} to="/graphic-card">
+            <Link style={{margin:"0 auto"}} to="/cpus">
                 <Button sx={{padding:"10px 20px", }} variant="contained" startIcon={<Handyman />}>
-                    View Completed Builds</Button>
+                    View All Cpus</Button>
                 </Link>
-          <HomeSection data={processorsData || []}/>
+          <HomeSection data={processorsData.slice(0,3) || []}/>
         </Box>
     
 }

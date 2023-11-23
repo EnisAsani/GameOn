@@ -1,4 +1,4 @@
-import {  Handyman, Memory, Receipt } from "@mui/icons-material"
+import { Memory, BuildCircle } from "@mui/icons-material"
 import { Box, List, ListItem, ListItemButton, ListItemIcon, ListItemText,  } from "@mui/material"
 import { Link } from "react-router-dom"
 
@@ -21,16 +21,6 @@ export const MobileMenu = ({isMobileMenuOpen,handleMobileOpen }:any) => {
         <Close sx={{color:"white", display:"block",marginLeft:"auto", cursor:"pointer"}}/>
         </div> */}
         <List sx={{paddingTop:"0"}}>
-        <Link to="/graphic-card" style={{textDecoration:"none"}} onClick={handleMobileOpen}>
-        <ListItem sx={{color:"white"}}>
-            <ListItemButton>
-              <ListItemIcon>
-                <Handyman sx={{color:"white"}} />
-              </ListItemIcon>
-              <ListItemText primary="Builds" />
-            </ListItemButton>
-          </ListItem>
-          </Link>
             <Link to="/cpus" style={{textDecoration:"none"}} onClick={handleMobileOpen}>
           <ListItem sx={{color:"white"}}>
             <ListItemButton>
@@ -41,13 +31,13 @@ export const MobileMenu = ({isMobileMenuOpen,handleMobileOpen }:any) => {
             </ListItemButton>
           </ListItem>
           </Link>
-          <Link to="/store" style={{textDecoration:"none"}} onClick={handleMobileOpen}>
+          <Link to="/gpus" style={{textDecoration:"none"}} onClick={handleMobileOpen}>
           <ListItem sx={{color:"white"}}>
             <ListItemButton>
               <ListItemIcon>
-                <Receipt sx={{color:"white"}}/>
+                <BuildCircle sx={{color:"white"}}/>
               </ListItemIcon>
-              <ListItemText primary="Store" />
+              <ListItemText primary="Gpus" />
             </ListItemButton>
           </ListItem>
           </Link>

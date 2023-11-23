@@ -26,7 +26,7 @@ export const GraphicCardProduct = (props: GraphicCardProps) => {
     padding:"5px", cursor:"pointer"
     }} >
         <div onClick={()=> navigate(`/gpu/${props.id}`)} style={{overflow:"hidden", borderRadius:"10px"}}>
-        <img className="graphicImg" style={{objectFit:"cover", borderRadius:"10px", aspectRatio:"16/9"}} width="100%" src={baseImgUrl + props.imgUrl || "https://media.istockphoto.com/id/1314343964/photo/top-end-system-unit-for-gaming-computer-close-up.jpg?s=2048x2048&w=is&k=20&c=gz1quan2pGMzCMIYUfzfxCSGgCz0asnPNu0B3rclQTI="}/>
+        <img className="graphicImg" style={{objectFit:"cover", borderRadius:"10px", aspectRatio:"16/9"}} width="100%" src={baseImgUrl + props.imgUrl.toLowerCase() || "https://media.istockphoto.com/id/1314343964/photo/top-end-system-unit-for-gaming-computer-close-up.jpg?s=2048x2048&w=is&k=20&c=gz1quan2pGMzCMIYUfzfxCSGgCz0asnPNu0B3rclQTI="}/>
         </div>
         <Typography sx={{padding:"10px 0 0 0", lineHeight:"1.5rem"}} variant="h5" fontSize="1.4rem" color="white">{props.name}</Typography>
         {/* <Typography variant="h6" fontSize=".8rem" color="white">{props.name}</Typography> */}

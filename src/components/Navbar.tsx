@@ -1,7 +1,7 @@
 import {  Button} from "react-bootstrap"
 import { useShoppingCart } from "../context/ShoppingCartContext"
 import { AppBar, Box, Toolbar, Button as MUIButton, TextField, Autocomplete, styled } from "@mui/material"
-import {Link} from "react-router-dom";
+// import {Link} from "react-router-dom";
 import MenuIcon from '@mui/icons-material/Menu';
 import { ProductsDropdown } from "./ProductsDropdown";
 import { useState } from "react";
@@ -59,13 +59,12 @@ export function Navbar (props:any) {
                     <MenuIcon sx={{ cursor:"pointer"}}/>
                     </Box>
                 <Box sx={{display:{xs: "none", md:"block"}, alignItems:"center"}}>
-                    <Link to="/graphic-card"><MUIButton sx={{color: "white", border:"none"}}>Builder</MUIButton></Link>
                 {/* <Link to="/store"><MUIButton sx={{color: "white"}}>Products</MUIButton></Link> */}
                 <MUIButton startIcon={<Handyman />} onClick={()=> {handleProductDropdown(), handleRotate()}} 
                 sx={{color: "white"}}>
                     Products <ArrowDropUp sx={{transform: rotate, transition: "all 0.2s linear"}} />
                 </MUIButton>
-                <Link to="/store"><MUIButton sx={{color: "white"}}>Completed Builds</MUIButton></Link>
+                {/* <Link to="/store"><MUIButton sx={{color: "white"}}>Completed Builds</MUIButton></Link> */}
                 
                 </Box>
                 <Box sx={{display: "flex", alignItems: "center", gap: "20px"}}>

@@ -22,7 +22,7 @@ export const HomeSection = ({data}: processorArray) => {
     gridTemplateColumns:"repeat(auto-fit, minmax(200px, 300px))",
     justifyContent:"center",
     // minHeight:"60vh",
-    margin:"25px auto",
+    margin:"35px auto",
     gap:"30px",
     width:"80%"}}>
         {data.map((item:ProcessorProps) => (
