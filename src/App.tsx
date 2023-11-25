@@ -13,6 +13,8 @@ import { MobileMenu } from "./components/MobileMenu"
 import { useState } from "react"
 import { Cpu } from "./pages/Cpu"
 import { Gpu } from "./pages/Gpu"
+import { Register } from "./pages/Register"
+import { SignIn } from "./pages/SignIn"
 
 function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
@@ -41,6 +43,8 @@ function App() {
           <Route path="/gpu/:gpuId" element={<Gpu />} />
           <Route path="/cpus" element={<Cpus />} />
           <Route path="/cpu/:cpuId" element={<Cpu />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/signin" element={<SignIn />} />
         </Routes>
         </Box>
       </ShoppingCartProvider>

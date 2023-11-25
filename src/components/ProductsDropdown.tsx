@@ -7,7 +7,7 @@ export const ProductsDropdown = ({isProductDropdownOpen, handleProductDropdown }
 
     return <Box sx={{
         background: "#073b4c",
-        width:"100%", height:"40vh", 
+        width:"100%", minHeight:"20vh", 
         top:"100%", left:"0", 
         zIndex:"10", 
         position:"static",

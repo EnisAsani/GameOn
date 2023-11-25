@@ -4,6 +4,7 @@ import { CartItem } from "./CartItem";
 import { formatCurrency } from "../utilities/formatCurrency";
 import storeItems from "../data/items.json"
 import { Button } from "@mui/material";
+import { Link } from "react-router-dom";
 
 
 type ShoppingCartProps = {
@@ -30,7 +31,7 @@ export function ShoppingCart({isOpen}: ShoppingCartProps) {
                 )}
              </div>
              <div style={{marginLeft:"auto"}}>
-             <Button variant="contained">Checkout</Button>
+                <Link to="https://dashboard.stripe.com/login"><Button variant="contained">Checkout</Button></Link>
              </div>
             </Stack>
         </Offcanvas.Body>
