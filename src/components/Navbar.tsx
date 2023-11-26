@@ -1,15 +1,13 @@
 import {  Button} from "react-bootstrap"
 import { useShoppingCart } from "../context/ShoppingCartContext"
-import { AppBar, Box, Toolbar, Button as MUIButton, TextField, Autocomplete, styled } from "@mui/material"
-// import {Link} from "react-router-dom";
+import { AppBar, Box, Toolbar, Button as MUIButton, InputBase } from "@mui/material"
 import MenuIcon from '@mui/icons-material/Menu';
 import { ProductsDropdown } from "./ProductsDropdown";
 import { useState } from "react";
 import { ArrowDropUp, Handyman } from "@mui/icons-material";
-import { useNavigate } from "react-router-dom";
+import { SearchData } from "./SearchData";
 
 export function Navbar (props:any) {
-    const navigate = useNavigate()
     const [isProductDropdownOpen, setIsProductDropdownOpen] = useState<boolean>(false)
 
     function handleProductDropdown () {
@@ -21,37 +19,28 @@ export function Navbar (props:any) {
     const handleRotate = () => setRotateChevron(!rotateChevron);
     const rotate = rotateChevron ? "rotate(180deg)" : "rotate(0)"
 
-    const CustomAutoComp = styled(Autocomplete) ({
-        "& label": {
-            color: "white"
-        },
-        "& .MuiInputBase-root" : {
-            border: "none",
-            color: "white"
-        },
-        "& fieldset": {
-            border: "none",
-        },
-        "& .MuiButtonBase-root": {
-            color: "white"
-        }
-    })
+   
 
     const {openCart, cartQuantity, graphicsData, processorsData} = useShoppingCart()
     const mergedData = [...graphicsData.map((item:any) => ({label: item.name, ...item})), 
         ...processorsData.map((item:any) => ({label: item.name, ...item}))
     ]
     
-    const [selectedValue, setSelectedValue] = useState<any>(null)
+    const [inputVal, setInputVal] = useState<string>("")
+    const[filteredData, setFilteredData] = useState<any>([])
     
-    // const top100Films = [
-    //     { label: 'The Shawshank Redemption', year: 1994 },
-    //     { label: 'The Godfather', year: 1972 },
-    //     { label: 'The Godfather: Part II', year: 1974 },
-    //     { label: 'The Dark Knight', year: 2008 },
-    //     { label: '12 Angry Men', year: 1957 },
-    //     { label: "Schindler's List", year: 1993 },
-    //     { label: 'Pulp Fiction', year: 1994 },]
+    const handleFilteredData = (input:string) => {
+        const filtered = mergedData.filter(item => item.name.toLowerCase().includes(input.toLowerCase()))
+        if(input) {
+        setFilteredData(filtered)
+    } else {
+        setFilteredData([])
+    }
+    }
+    const closeSearchData = () => {
+        handleFilteredData('')
+    }
+    
     return <Box sx={{position: "relative"}}>
                 <AppBar position="static" sx={{background: "#073b4c",padding: "0 10px" }}>
                     <Toolbar sx={{display: "flex",justifyContent:"space-between", alignItems: "center"}}>
@@ -59,34 +48,26 @@ export function Navbar (props:any) {
                     <MenuIcon sx={{ cursor:"pointer"}}/>
                     </Box>
                 <Box sx={{display:{xs: "none", md:"block"}, alignItems:"center"}}>
-                {/* <Link to="/store"><MUIButton sx={{color: "white"}}>Products</MUIButton></Link> */}
                 <MUIButton startIcon={<Handyman />} onClick={()=> {handleProductDropdown(), handleRotate()}} 
                 sx={{color: "white"}}>
                     Products <ArrowDropUp sx={{transform: rotate, transition: "all 0.2s linear"}} />
                 </MUIButton>
-                {/* <Link to="/store"><MUIButton sx={{color: "white"}}>Completed Builds</MUIButton></Link> */}
-                
                 </Box>
                 <Box sx={{display: "flex", alignItems: "center", gap: "20px"}}>
-                <CustomAutoComp
-                sx={{width: "200px"}}
-                value={selectedValue}
-                onChange={(event:any, newValue: any) =>  {
-                    setSelectedValue(newValue) 
-                    if(newValue && event) {
-                    const foundItem = mergedData.find(item => item.name === newValue.name)
-                    if(foundItem.maxClock) {
-                        navigate(`/cpu/${foundItem.id}`)
-                    } else {
-                        navigate(`/gpu/${foundItem.id}`)
-                    }
-                   }
-                }
-                }
-                    freeSolo
-                 options={mergedData}
-                    renderInput={(params) => <TextField {...params} label="Search..." />}
-                />
+                <InputBase  
+                value={inputVal}
+                onChange={(e:any)=> {
+                    handleFilteredData(e.target.value)
+                    setInputVal(e.target.value)
+                }}
+                sx={{border: "none",
+                padding:"0 0 0 10px",
+                color:"white",
+                    borderRadius: "5px", background:"#0d1321"}}
+                type="text" placeholder="Search"/>
+                <SearchData 
+                closeSearchData={closeSearchData}
+                searchData={filteredData.length ===0 ? [] : filteredData}/>
             {cartQuantity > 0 && (
             <Button onClick={()=> openCart()} className="rounded-circle "
             variant="outline-primary"

@@ -38,7 +38,7 @@ export const Cpus = () => {
     }
     
     return <React.Fragment>
-        <ProductsHeader productsAvailable={inputValue ? filteredData.length : processorsData.length} handleInput={handleInput} title="Choose a Processor"/>
+        <ProductsHeader productsAvailable={inputValue ? filteredData.length : currentPosts.length} handleInput={handleInput} title="Choose a Processor"/>
         <Box sx={{display:"grid", margin:"0 auto", width:"80%", padding:"20px 0",
         gridTemplateColumns:"repeat(auto-fit,minmax(200px, 300px))",gap:"20px", justifyContent:"center"}}>
             {!inputValue  && currentPosts.map(cpu => (
