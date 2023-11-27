@@ -3,16 +3,18 @@ import { AppBar, Box, Divider, Toolbar, Typography } from "@mui/material"
 import { Link, NavLink} from "react-router-dom";
 
 export const Header = () => {
-    // const label = { inputProps: { 'aria-label': 'Switch demo' } };
     
     return <Box>
-        <AppBar position="static" sx={{background: "#212529", padding: "0 10px"}}>
+        <AppBar position="static" sx={{background: "#212529", padding: "0 10px 0 0"}}>
             <Toolbar sx={{display: "flex", 
             justifyContent: "space-between", 
             alignItems: "center"}}>
                 
                 <NavLink style={{textDecoration:"none", color:"white"}} to="/">
-                    <Typography variant="h6" sx={{cursor: "pointer"}}>GAME ON</Typography>
+                    <Typography variant="h6" sx={{cursor: "pointer", display:{xs:"none", md:"block"}}}>GAME ON</Typography>
+                    <Box sx={{display:{xs:"block", md:"none"}}}>
+                    <img loading="lazy" style={{height:"50px", aspectRatio:"1/1", objectFit:"cover"}} src="/images/GO logo png.png"/>
+                    </Box>
                     </NavLink>
                 <Box sx={{display: {xs: "none", md: "flex"},alignItems:"center", justifyContent:"space-between",gap: "20px"}}>
                     <Link style={{textDecoration:"none", color:"white"}} to="signin">
