@@ -1,5 +1,9 @@
 .processorImg {
     transition: transform .2s ease-out;
+    object-fit: cover;
+    border-radius: 10px;
+    aspect-ratio: 16/9;
+    width: 100%;
 }
 
 .processorImg:hover {

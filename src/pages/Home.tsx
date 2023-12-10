@@ -21,40 +21,7 @@ export function Home () {
         price: number
     }
 
-    // type ProcessorProps = {
-    //     id:number
-    //     processorBrand:number
-    //     name: string
-    //     imgUrl: string
-    //     coreClock: number
-    //     maxClock: number
-    //     price: number
-    // }
-
     const { graphicsData, processorsData} = useShoppingCart()
-    
-    // const [graphicsApi, setGraphicsApi] = useState<GraphicCardProps[]>([])
-    // const [processorsApi, setProcessorsApi] = useState<ProcessorProps[]>([])
-
-    // const fetchGraphics = async () => {
-    //    const response = await axios.get("https://localhost:7122/api/graphiccard/getall")
-    // //    console.log(response.data);
-    //    setGraphicsApi(response.data)
-    // }
-
-    // const fetchProcessors = async () => {
-    //     const response = await axios.get("https://localhost:7122/api/processor/getall")
-    //     // console.log(response.data);
-    //     setProcessorsApi(response.data)
-        
-    // }
-
-    // useEffect(()=> {
-    //    fetchGraphics()
-    //    fetchProcessors()
-    // }
-    //     ,[])
-
 
     return <Box sx={{display: "flex", flexDirection:"column", 
         justifyContent:"center", 
@@ -69,8 +36,7 @@ export function Home () {
           <Box sx={{display:"flex", justifyContent:"center", 
           flexWrap:"wrap",
           alignItems:"center", 
-          minHeight:"50vh",
-          margin:{xs:"20px auto", sm: "0 auto"},
+          margin:{xs:"20px auto", sm: "35px auto"},
           gap:"30px",
           width:"80%"}}>
                 {graphicsData?.slice(0,3).map((guide: GraphicCardProps) => (

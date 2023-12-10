@@ -1,6 +1,9 @@
 import { AccountCircle } from "@mui/icons-material";
 import { AppBar, Box, Divider, Toolbar, Typography } from "@mui/material"
 import { Link, NavLink} from "react-router-dom";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+import "./Header.css"
 
  const Header = () => {
     
@@ -13,7 +16,8 @@ import { Link, NavLink} from "react-router-dom";
                 <NavLink style={{textDecoration:"none", color:"white"}} to="/">
                     <Typography variant="h6" sx={{cursor: "pointer", display:{xs:"none", md:"block"}}}>GAME ON</Typography>
                     <Box sx={{display:{xs:"block", md:"none"}}}>
-                    <img loading="lazy" style={{height:"50px", aspectRatio:"1/1", objectFit:"cover"}} src="/images/GO logo png.png"/>
+                    {/* <img loading="lazy" style={{height:"50px", aspectRatio:"1/1", objectFit:"cover"}} src="/images/GO logo png.png"/> */}
+                    <LazyLoadImage className="header_logo" src="/images/GO logo png.png" effect="blur"/>
                     </Box>
                     </NavLink>
                 <Box sx={{display: {xs: "none", md: "flex"},alignItems:"center", justifyContent:"space-between",gap: "20px"}}>
