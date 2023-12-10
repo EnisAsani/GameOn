@@ -1,9 +1,12 @@
 import { Box, Button, Divider, InputBase, Typography } from "@mui/material"
+import React from "react"
 import { useNavigate } from "react-router-dom"
 
-export const Register = () => {
+ const Register = () => {
     const navigate = useNavigate()
-    return <Box sx={{display:"flex",alignItems:"center",justifyContent:"center", height:"90vh", flexDirection:"column"}}>
+    return <React.Fragment>
+    
+    <Box sx={{display:"flex",alignItems:"center",justifyContent:"center", height:"90vh", flexDirection:"column"}}>
         <Typography sx={{padding:"0 0 20px 0"}} color="white" variant="h3">Registration</Typography>
     <Box sx={{background:"#3D3D54", minHeight:{xs:"50vh", sm:"60vh"}, 
     width:{xs:"90%", sm:"450px"}, display:"flex", flexDirection:"column", 
@@ -27,4 +30,7 @@ export const Register = () => {
         
     </Box>
     </Box>
+    </React.Fragment>
 }
+
+export default Register;

@@ -2,7 +2,7 @@ import { AccountCircle } from "@mui/icons-material";
 import { AppBar, Box, Divider, Toolbar, Typography } from "@mui/material"
 import { Link, NavLink} from "react-router-dom";
 
-export const Header = () => {
+ const Header = () => {
     
     return <Box>
         <AppBar position="static" sx={{background: "#212529", padding: "0 10px 0 0"}}>
@@ -43,4 +43,7 @@ export const Header = () => {
             </Toolbar>
         </AppBar>
     </Box>
+    
 }
+
+export default Header
