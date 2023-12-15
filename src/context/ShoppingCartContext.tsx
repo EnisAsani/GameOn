@@ -39,6 +39,9 @@ type ShoppingCartContext = {
     cartItems: CartItem[]
     graphicsData: any[]
     processorsData:ProcessorProps[]
+    logOutUser: ()=> void
+    logInUser: (user:any) => void
+    activeUser:any
 }
 
 type CartItem = {
@@ -58,6 +61,7 @@ export function ShoppingCartProvider({children} : ShoppingCartProviderProps) {
 
     const [graphicsApi, setGraphicsApi] = useState<GraphicCardProps[]>(()=>[])
     const [processorsApi, setProcessorsApi] = useState<ProcessorProps[]>(()=>[])
+    const [activeUser, setActiveUser] = useState<any>(null)
 
     const fetchGraphics = async () => {
         const response = await axios.get("https://gameonapi.azurewebsites.net/api/graphiccard/getall")
@@ -71,13 +75,36 @@ export function ShoppingCartProvider({children} : ShoppingCartProviderProps) {
          setProcessorsApi(response.data)
      }
 
-    
+     const validateUserLoggedIn = () => {
+        if(localStorage.getItem('user')) {
+            const userData:any | null = JSON.parse(localStorage.getItem('user') || "")
+            const isTokenValid = Date.now() > Date.parse(userData?.expires)
+            if(!isTokenValid) {
+            setActiveUser(userData);
+            } else {
+                setActiveUser(null)
+                localStorage.removeItem('user')
+            }
+            return
+        } 
+     }
+
+    // validateUserLoggedIn();
+
+    const logOutUser = () => {
+        localStorage.removeItem('user');
+        setActiveUser(null)
+    }
+
+    const logInUser = (user:any) => {
+        localStorage.setItem("user", JSON.stringify(user))
+        setActiveUser(user)
+    }
 
     useEffect(()=> {
         fetchGraphics()
         fetchProcessors()
-        // const labeledProcessor = processorsApi.map(prc => {label: prc.name})
-        // const labeledGraphic = graphicsApi.map(graph => {label: graph.name})
+        validateUserLoggedIn()
      }
          ,[])
 
@@ -133,7 +160,7 @@ export function ShoppingCartProvider({children} : ShoppingCartProviderProps) {
     increaseCartQuantity,
      decreaseItemQuantity, removeFromCart, 
      cartItems, cartQuantity, openCart, closeCart,
-     graphicsData:graphicsApi, processorsData:processorsApi}}>
+     graphicsData:graphicsApi, processorsData:processorsApi, logOutUser, activeUser, logInUser}}>
         {children}
         <ShoppingCart isOpen={isOpen}/>
     </ShoppingCartContext.Provider>

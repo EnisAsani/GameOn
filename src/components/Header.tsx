@@ -4,8 +4,12 @@ import { Link, NavLink} from "react-router-dom";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import "./Header.css"
+import { useShoppingCart } from "../context/ShoppingCartContext";
 
  const Header = () => {
+    
+    const {activeUser, logOutUser} = useShoppingCart()
+    // console.log(activeUser);
     
     return <Box>
         <AppBar position="static" sx={{background: "#212529", padding: "0 10px 0 0"}}>
@@ -22,16 +26,20 @@ import "./Header.css"
                     </NavLink>
                 <Box sx={{display: {xs: "none", md: "flex"},alignItems:"center", justifyContent:"space-between",gap: "20px"}}>
                     <Link style={{textDecoration:"none", color:"white"}} to="signin">
-                    <Typography variant="h6" sx={{fontSize:".9rem",
+                    {!activeUser && <Typography variant="h6" sx={{fontSize:".9rem",
                     cursor: "pointer",
-                     "&:hover": {color: "#f72585"}}}>Log In</Typography>
+                     "&:hover": {color: "#f72585"}}}>Log In</Typography>}
                     </Link>
+                    {activeUser && <Typography onClick={logOutUser} variant="h6" sx={{fontSize:".9rem", 
+                    cursor: "pointer",
+                    "&:hover": {color: "#f72585"} }}>Log Out</Typography>}
                     <Divider orientation="vertical" flexItem sx={{background: "white"}}/>
                     <Link style={{textDecoration:"none", color:"white"}} to="/register">
                     <Typography variant="h6" sx={{fontSize:".9rem", 
                     cursor: "pointer",
                     "&:hover": {color: "#f72585"} }}>Register</Typography>
                     </Link>
+                    
                     
                 </Box>
                 {/* small navigation */}

@@ -31,7 +31,7 @@ export const ProcessorProduct = (props : ProcessorProps) => {
     }} >
         <div onClick={()=> navigate(`/cpu/${props.id}`)} style={{overflow:"hidden", borderRadius:"10px"}}>
         {/* <img loading="lazy" className="processorImg" style={{objectFit:"cover", borderRadius:"10px", aspectRatio:"16/9"}} width="100%" src={baseImgUrl + props.imgUrl || "https://media.istockphoto.com/id/1314343964/photo/top-end-system-unit-for-gaming-computer-close-up.jpg?s=2048x2048&w=is&k=20&c=gz1quan2pGMzCMIYUfzfxCSGgCz0asnPNu0B3rclQTI="}/> */}
-        <LazyLoadImage className="processorImg" src={baseImgUrl + props.imgUrl.toLowerCase()} effect="blur"/>
+        <LazyLoadImage className="processorImg" src={baseImgUrl + props.imgUrl?.toLowerCase()} effect="blur"/>
         </div>
         <Typography sx={{padding:"10px 0 0 0", lineHeight:"1.5rem"}} variant="h5" fontSize="1.4rem" color="white">{props.name}</Typography>
         <Typography variant="h6" fontSize=".8rem" color="white">{processorEnum[props.processorBrand].toUpperCase()}</Typography>
