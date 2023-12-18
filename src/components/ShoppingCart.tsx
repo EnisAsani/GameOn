@@ -2,7 +2,7 @@ import { Offcanvas, Stack } from "react-bootstrap";
 import { useShoppingCart } from "../context/ShoppingCartContext";
 import { CartItem } from "./CartItem";
 import { formatCurrency } from "../utilities/formatCurrency";
-import storeItems from "../data/items.json"
+// import storeItems from "../data/items.json"
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 
@@ -13,7 +13,7 @@ type ShoppingCartProps = {
 
 export function ShoppingCart({isOpen}: ShoppingCartProps) {
     const {closeCart, cartItems,graphicsData, processorsData } = useShoppingCart()
-    const allItems = storeItems.concat(processorsData, graphicsData)
+    const allItems = processorsData.concat(graphicsData)
     return <Offcanvas onHide={()=> closeCart()} show={isOpen} placement="end">
         <Offcanvas.Header closeButton>
            <Offcanvas.Title>Cart</Offcanvas.Title> 

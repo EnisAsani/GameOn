@@ -81,18 +81,10 @@ export function ShoppingCartProvider({children} : ShoppingCartProviderProps) {
      const validateUserLoggedIn = () => {
         if(localStorage.getItem('user')) {
             const userData:any | null = JSON.parse(localStorage.getItem('user') || "")
-            const isTokenValid = Date.now() > Date.parse(userData?.expires)
-            if(!isTokenValid) {
+            // const isTokenValid = Date.now() > Date.parse(userData?.expires)
             setActiveUser(userData);
-            } else {
-                setActiveUser(null)
-                localStorage.removeItem('user')
-            }
-            return
         } 
      }
-
-    // validateUserLoggedIn();
 
     const logOutUser = () => {
         localStorage.removeItem('user');
@@ -108,6 +100,7 @@ export function ShoppingCartProvider({children} : ShoppingCartProviderProps) {
         fetchGraphics()
         fetchProcessors()
         validateUserLoggedIn()
+        localStorage.removeItem("shopping-cart")
      }
          ,[])
 
