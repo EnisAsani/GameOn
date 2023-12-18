@@ -65,12 +65,15 @@ export function ShoppingCartProvider({children} : ShoppingCartProviderProps) {
 
     const fetchGraphics = async () => {
         const response = await axios.get("https://gameonapi.azurewebsites.net/api/graphiccard/getall")
+        console.log(response);
+        
         // const response = await axios.get('https://localhost:7122/api/GraphicCard/getall')
         setGraphicsApi(response.data)
      }
  
      const fetchProcessors = async () => {
          const response = await axios.get("https://gameonapi.azurewebsites.net/api/processor/getall")
+         console.log(response);
         //  const response = await axios.get('https://localhost:7122/api/processor/getall')
          setProcessorsApi(response.data)
      }

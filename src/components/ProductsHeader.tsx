@@ -1,5 +1,5 @@
 import { Box, Divider, Typography } from "@mui/material"
-import UnstyledSelectControlled from "../components/ControlledSelect";
+// import UnstyledSelectControlled from "../components/ControlledSelect";
 import { Search } from "@mui/icons-material";
 import { InputBase } from '@mui/material';
 
@@ -34,8 +34,8 @@ export const ProductsHeader = ({title, handleInput,productsAvailable}: ProductsH
             alignItems: "center", 
             gap:"10px",
             }}>
-            <Typography variant="h6">Sort By</Typography>
-            <UnstyledSelectControlled></UnstyledSelectControlled>
+            {/* <Typography variant="h6">Sort By</Typography>
+            <UnstyledSelectControlled></UnstyledSelectControlled> */}
             </Box>
             <Box sx={{display:"flex", alignItems: "center", gap:"10px", padding:"20px 0"}}>
                 <Search sx={{cursor:"pointer"}}/>
