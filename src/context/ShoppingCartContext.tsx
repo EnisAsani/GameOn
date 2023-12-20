@@ -1,6 +1,7 @@
 import { ReactNode, createContext, useContext, useState, useEffect } from "react";
 import { ShoppingCart } from "../components/ShoppingCart";
 import { useLocalStorage } from "../hooks/useLocalStorage";
+import { Pcus } from "../pages/Pcus";
 import axios from "axios";
 
 
@@ -37,8 +38,9 @@ type ShoppingCartContext = {
     removeFromCart: (id: string) => void
     cartQuantity: number
     cartItems: CartItem[]
-    graphicsData: any[]
+    graphicsData: GraphicCardProps[]
     processorsData:ProcessorProps[]
+    pcProductsData: Pcus[]
     logOutUser: ()=> void
     logInUser: (user:any) => void
     activeUser:any
@@ -59,8 +61,9 @@ export function useShoppingCart() {
 
 export function ShoppingCartProvider({children} : ShoppingCartProviderProps) {
 
-    const [graphicsApi, setGraphicsApi] = useState<GraphicCardProps[]>(()=>[])
-    const [processorsApi, setProcessorsApi] = useState<ProcessorProps[]>(()=>[])
+    const [graphicsApi, setGraphicsApi] = useState<GraphicCardProps[] | []>([])
+    const [processorsApi, setProcessorsApi] = useState<ProcessorProps[] | []>([])
+    const [pcProducts, setPcProducts] = useState<Pcus[] | []>(()=>[])
     const [activeUser, setActiveUser] = useState<any>(null)
 
     const fetchGraphics = async () => {
@@ -77,6 +80,12 @@ export function ShoppingCartProvider({children} : ShoppingCartProviderProps) {
         //  const response = await axios.get('https://localhost:7122/api/processor/getall')
          setProcessorsApi(response.data)
      }
+
+     const fetchPcProducts = async () => {
+        const response = await axios.get('https://gameonapi.azurewebsites.net/api/pcproduct/getall')
+        setPcProducts(response.data)
+        // console.log(response.data);
+    }
 
      const validateUserLoggedIn = () => {
         if(localStorage.getItem('user')) {
@@ -99,6 +108,7 @@ export function ShoppingCartProvider({children} : ShoppingCartProviderProps) {
     useEffect(()=> {
         fetchGraphics()
         fetchProcessors()
+        fetchPcProducts()
         validateUserLoggedIn()
         localStorage.removeItem("shopping-cart")
      }
@@ -130,6 +140,7 @@ export function ShoppingCartProvider({children} : ShoppingCartProviderProps) {
         })
     }
 
+
     function decreaseItemQuantity(id: string) {
         setCartItems(currItems => {
             if(currItems.find(item => item.id === id)?.quantity === 1) {
@@ -156,7 +167,9 @@ export function ShoppingCartProvider({children} : ShoppingCartProviderProps) {
     increaseCartQuantity,
      decreaseItemQuantity, removeFromCart, 
      cartItems, cartQuantity, openCart, closeCart,
-     graphicsData:graphicsApi, processorsData:processorsApi, logOutUser, activeUser, logInUser}}>
+     graphicsData:graphicsApi, processorsData:processorsApi, 
+     logOutUser, activeUser, logInUser, 
+     pcProductsData:pcProducts}}>
         {children}
         <ShoppingCart isOpen={isOpen}/>
     </ShoppingCartContext.Provider>

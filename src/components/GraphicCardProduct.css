@@ -1,4 +1,17 @@
 
+.graphicCardWrapper {
+    display: flex;
+    flex-direction: column;
+    background: #073b4c;
+    border-radius: 10px;
+    flex: 1 1;
+    max-width: 300px;
+    min-width: 200px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+
 .graphicImg {
     transition: 0.2s ease-out;
     object-fit: cover;

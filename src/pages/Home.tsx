@@ -9,6 +9,7 @@ import { HomeSection } from "../components/HomeSection";
 // import { useEffect, useState } from "react";
 import { GraphicCardProduct } from "../components/GraphicCardProduct";
 import { useShoppingCart } from "../context/ShoppingCartContext";
+import "../components/HomeSection.css"
 
 export function Home () {
 
@@ -33,12 +34,7 @@ export function Home () {
             do-it-yourself computer builders.
             </Typography>
             <Link style={{margin:"0 auto"}} to="/gpus"><Button sx={{padding:"10px 20px", }} variant="contained" startIcon={<Handyman />}>View All Cards</Button></Link>
-          <Box sx={{display:"flex", justifyContent:"center", 
-          flexWrap:"wrap",
-          alignItems:"center", 
-          margin:{xs:"20px auto", sm: "35px auto"},
-          gap:"30px",
-          width:"80%"}}>
+          <Box className="productsDiv">
                 {graphicsData?.slice(0,3).map((guide: GraphicCardProps) => (
                     <GraphicCardProduct key={guide.id} {...guide}/>
                 ))}

@@ -1,6 +1,6 @@
 import { Box, Divider, Typography } from "@mui/material"
 // import UnstyledSelectControlled from "../components/ControlledSelect";
-import { Search } from "@mui/icons-material";
+// import { Search } from "@mui/icons-material";
 import { InputBase } from '@mui/material';
 
 
@@ -38,7 +38,7 @@ export const ProductsHeader = ({title, handleInput,productsAvailable}: ProductsH
             <UnstyledSelectControlled></UnstyledSelectControlled> */}
             </Box>
             <Box sx={{display:"flex", alignItems: "center", gap:"10px", padding:"20px 0"}}>
-                <Search sx={{cursor:"pointer"}}/>
+                {/* <Search sx={{cursor:"pointer"}}/> */}
                 <InputBase 
                 onChange={(e)=>handleInput(e.currentTarget.value)}
                 sx={{border: "none",

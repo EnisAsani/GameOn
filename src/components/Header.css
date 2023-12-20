@@ -3,3 +3,34 @@
     aspect-ratio: 1/1;
     object-fit: cover;
 }
+
+
+.accountModal {
+    position: absolute;
+    background: gray;
+    width: 75px;
+    max-height: 50px;
+    z-index: 5;
+    top: 110%;
+    left: -25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+.accountModal p {
+    transition: 0.2s;
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+    text-align: center;
+    height: 100%;
+}
+
+.accountModal p:last-child {
+    border-radius: 0 0 5px 5px;
+}
+
+.accountModal p:hover {
+    background: #212529
+}

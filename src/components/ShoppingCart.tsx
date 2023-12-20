@@ -12,8 +12,8 @@ type ShoppingCartProps = {
 }
 
 export function ShoppingCart({isOpen}: ShoppingCartProps) {
-    const {closeCart, cartItems,graphicsData, processorsData } = useShoppingCart()
-    const allItems = processorsData.concat(graphicsData)
+    const {closeCart, cartItems,graphicsData, processorsData, pcProductsData } = useShoppingCart()
+    const allItems:any[] = [...graphicsData, ...processorsData, ...pcProductsData]
     return <Offcanvas onHide={()=> closeCart()} show={isOpen} placement="end">
         <Offcanvas.Header closeButton>
            <Offcanvas.Title>Cart</Offcanvas.Title> 

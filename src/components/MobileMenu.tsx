@@ -1,4 +1,4 @@
-import { Memory, BuildCircle } from "@mui/icons-material"
+import { Memory, BuildCircle, DesktopMac } from "@mui/icons-material"
 import { Box, List, ListItem, ListItemButton, ListItemIcon, ListItemText,  } from "@mui/material"
 import { Link } from "react-router-dom"
 
@@ -38,6 +38,16 @@ export const MobileMenu = ({isMobileMenuOpen,handleMobileOpen }:any) => {
                 <BuildCircle sx={{color:"white"}}/>
               </ListItemIcon>
               <ListItemText primary="Gpus" />
+            </ListItemButton>
+          </ListItem>
+          </Link>
+          <Link to="/pcus" style={{textDecoration:"none"}} onClick={handleMobileOpen}>
+          <ListItem sx={{color:"white"}}>
+            <ListItemButton>
+              <ListItemIcon>
+                <DesktopMac sx={{color:"white"}}/>
+              </ListItemIcon>
+              <ListItemText primary="Pcus" />
             </ListItemButton>
           </ListItem>
           </Link>

@@ -15,6 +15,8 @@ import { Gpu } from "./pages/Gpu"
 import Register from "./pages/Register"
 // const Register = lazy(()=> import('./pages/Register'))
 import { SignIn } from "./pages/SignIn"
+import { Pcus } from "./pages/Pcus"
+import Pcu from "./pages/Pcu"
 
 function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
@@ -43,6 +45,8 @@ function App() {
           <Route path="/cpu/:cpuId" element={<Cpu />} />
           <Route path="/register" element={<Register />}/>
           <Route path="/signin" element={<SignIn />} />
+          <Route path="/pcus" element={<Pcus />} />
+          <Route path="/pcu/:pcuId" element={<Pcu />} />
         </Routes>
         </Box>
       </ShoppingCartProvider>

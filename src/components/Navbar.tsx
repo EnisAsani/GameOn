@@ -1,29 +1,32 @@
 import {  Button} from "react-bootstrap"
 import { useShoppingCart } from "../context/ShoppingCartContext"
-import { AppBar, Box, Toolbar, Button as MUIButton, InputBase } from "@mui/material"
+import { AppBar, Box, Toolbar, InputBase,List, ListItem, ListItemButton, ListItemIcon, ListItemText } from "@mui/material"
 import MenuIcon from '@mui/icons-material/Menu';
-import { ProductsDropdown } from "./ProductsDropdown";
+// import { ProductsDropdown } from "./ProductsDropdown";
 import { useState } from "react";
-import { ArrowDropUp, Handyman } from "@mui/icons-material";
+// import { ArrowDropUp, Handyman } from "@mui/icons-material";
 import { SearchData } from "./SearchData";
+import { BuildCircle, DesktopMac, Memory } from "@mui/icons-material"
+import { Link } from "react-router-dom"
 
 export function Navbar (props:any) {
-    const [isProductDropdownOpen, setIsProductDropdownOpen] = useState<boolean>(false)
+    // const [isProductDropdownOpen, setIsProductDropdownOpen] = useState<boolean>(false)
 
-    function handleProductDropdown () {
-        setIsProductDropdownOpen(prevState => !prevState)
-    }
+    // function handleProductDropdown () {
+    //     setIsProductDropdownOpen(prevState => !prevState)
+    // }
 
-    const [rotateChevron, setRotateChevron] = useState(false);
+    // const [rotateChevron, setRotateChevron] = useState(false);
 
-    const handleRotate = () => setRotateChevron(!rotateChevron);
-    const rotate = rotateChevron ? "rotate(180deg)" : "rotate(0)"
+    // const handleRotate = () => setRotateChevron(!rotateChevron);
+    // const rotate = rotateChevron ? "rotate(180deg)" : "rotate(0)"
 
    
 
-    const {openCart, cartQuantity, graphicsData, processorsData} = useShoppingCart()
-    const mergedData = [...graphicsData.map((item:any) => ({label: item.name, ...item})), 
-        ...processorsData.map((item:any) => ({label: item.name, ...item}))
+    const {openCart, cartQuantity, graphicsData, processorsData, pcProductsData} = useShoppingCart()
+    const mergedData = [...graphicsData, 
+        ...processorsData,
+        ...pcProductsData
     ]
     
     const [inputVal, setInputVal] = useState<string>("")
@@ -43,16 +46,48 @@ export function Navbar (props:any) {
     
     return <Box sx={{position: "relative"}}>
                 <AppBar position="static" sx={{background: "#073b4c",padding: "0 10px" }}>
-                    <Toolbar sx={{display: "flex",justifyContent:"space-between", alignItems: "center"}}>
+                    <Toolbar sx={{display: "flex",justifyContent:"space-between", alignItems: "center", height:'64px'}}>
                         <Box sx={{display:{xs:"block", md:"none"}}} onClick={props.handleMobileOpen}>
                     <MenuIcon sx={{ cursor:"pointer"}}/>
                     </Box>
-                <Box sx={{display:{xs: "none", md:"block"}, alignItems:"center"}}>
-                <MUIButton startIcon={<Handyman />} onClick={()=> {handleProductDropdown(), handleRotate()}} 
+                {/* <Box sx={{display:{xs: "none", md:"block"}, alignItems:"center"}}> */}
+                <List sx={{display:{xs: "none", md:"flex"}, alignItems:"center", padding:'0'}}>
+                <Link style={{textDecoration:"none"}} to="cpus" >
+            <ListItem >
+                <ListItemButton sx={{display:'flex', justifyContent:'space-between'}}>
+                    <ListItemIcon sx={{minWidth:'50%'}}>
+                        <Memory sx={{color:"white"}}/>
+                    </ListItemIcon>
+                <ListItemText sx={{color:"white"}} primary="Cpus"></ListItemText>
+                </ListItemButton>
+            </ListItem>
+            </Link>
+            <Link style={{textDecoration:"none"}} to="gpus">
+            <ListItem>
+                <ListItemButton>
+                    <ListItemIcon>
+                        <BuildCircle sx={{color:"white"}}/>
+                    </ListItemIcon>
+                <ListItemText sx={{color:"white"}} primary="Gpus"></ListItemText>
+                </ListItemButton>
+            </ListItem>
+            </Link>
+            <Link style={{textDecoration:"none"}} to="pcus">
+            <ListItem>
+                <ListItemButton>
+                    <ListItemIcon>
+                        <DesktopMac sx={{color:"white"}}/>
+                    </ListItemIcon>
+                <ListItemText sx={{color:"white"}} primary="Pcus"></ListItemText>
+                </ListItemButton>
+            </ListItem>
+            </Link>
+            </List>
+                {/* <MUIButton startIcon={<Handyman />} onClick={()=> {handleProductDropdown(), handleRotate()}} 
                 sx={{color: "white"}}>
                     Products <ArrowDropUp sx={{transform: rotate, transition: "all 0.2s linear"}} />
-                </MUIButton>
-                </Box>
+                </MUIButton> */}
+                {/* </Box> */}
                 <Box sx={{display: "flex", alignItems: "center", gap: "20px"}}>
                 <InputBase  
                 value={inputVal}
@@ -93,8 +128,8 @@ export function Navbar (props:any) {
             </Toolbar>
                 </AppBar>
                 {props.children}
-                <ProductsDropdown 
+                {/* <ProductsDropdown 
                 handleProductDropdown={handleProductDropdown}
-                isProductDropdownOpen={isProductDropdownOpen}/>
+                isProductDropdownOpen={isProductDropdownOpen}/> */}
             </Box>
 }

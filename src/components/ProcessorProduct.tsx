@@ -7,7 +7,7 @@ import { useShoppingCart } from "../context/ShoppingCartContext";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
-type ProcessorProps = {
+export type ProcessorProps = {
     id:string
     processorBrand:number
     name: string
