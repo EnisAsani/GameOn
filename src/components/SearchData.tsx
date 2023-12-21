@@ -5,7 +5,11 @@ export const SearchData = (props:any) => {
     const handleNavigate = (item:any) => {
         if(item.maxClock) {
             navigate(`/cpu/${item.id}`)
-        } else {
+        } 
+        else if(item.motherBoard) {
+            navigate(`/pcu/${item.id}`)
+        }
+        else {
             navigate(`/gpu/${item.id}`)
         }
     }
