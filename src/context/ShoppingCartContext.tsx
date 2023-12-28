@@ -65,10 +65,12 @@ export function ShoppingCartProvider({children} : ShoppingCartProviderProps) {
     const [processorsApi, setProcessorsApi] = useState<ProcessorProps[] | []>([])
     const [pcProducts, setPcProducts] = useState<Pcus[] | []>(()=>[])
     const [activeUser, setActiveUser] = useState<any>(null)
+    let isDataFetched = false;
+
 
     const fetchGraphics = async () => {
         const response = await axios.get("https://gameonapi.azurewebsites.net/api/graphiccard/getall")
-        console.log(response);
+        // console.log(response);
         
         // const response = await axios.get('https://localhost:7122/api/GraphicCard/getall')
         setGraphicsApi(response.data)
@@ -76,7 +78,7 @@ export function ShoppingCartProvider({children} : ShoppingCartProviderProps) {
  
      const fetchProcessors = async () => {
          const response = await axios.get("https://gameonapi.azurewebsites.net/api/processor/getall")
-         console.log(response);
+        //  console.log(response);
         //  const response = await axios.get('https://localhost:7122/api/processor/getall')
          setProcessorsApi(response.data)
      }
@@ -105,12 +107,18 @@ export function ShoppingCartProvider({children} : ShoppingCartProviderProps) {
         setActiveUser(user)
     }
 
+
     useEffect(()=> {
+        
+        if(!isDataFetched){
         fetchGraphics()
         fetchProcessors()
         fetchPcProducts()
         validateUserLoggedIn()
         localStorage.removeItem("shopping-cart")
+        console.log('effect run')
+        isDataFetched = true
+    }
      }
          ,[])
 
@@ -125,6 +133,7 @@ export function ShoppingCartProvider({children} : ShoppingCartProviderProps) {
     }
 
     function increaseCartQuantity(id: string) {
+        // const foundItem = cartItems.find(item => item.id === id)
         setCartItems(currItems => {
             if(currItems.find(item => item.id === id) == null) {
                 return [...currItems, {id, quantity: 1}]

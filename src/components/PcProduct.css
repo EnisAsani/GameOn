@@ -1,5 +1,5 @@
 .pcProductCardWrapper {
-    height: 350px;
+    height: 425px;
     display: flex;
     flex-direction: column;
     background: #073b4c;
@@ -8,8 +8,10 @@
     padding: 5px;
     color: white;
     cursor: pointer;
-    max-width: 300px;
-    min-width: 200px;
+    /* max-width: 300px;
+    min-width: 200px; */
+    width: 200px;
+    margin: 0 auto;
 }
 
 .pcProductImg {
@@ -20,3 +22,4 @@
 .pcProductImg:hover {
     transform: scale(1.2);
 }
+

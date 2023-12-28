@@ -1,9 +1,15 @@
 .pcusWrapper {
     display: grid;
     padding: 35px 0;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 300px));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 200px));
     justify-content: center;
     margin: 0 auto;
-    gap: 30px;
+    gap: 25px;
     width: 80%;
+}
+
+@media(max-width: 600px) {
+    .pcusWrapper {
+        width: 90%;
+    }
 }

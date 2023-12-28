@@ -39,6 +39,9 @@ export function Home () {
                     <GraphicCardProduct key={guide.id} {...guide}/>
                 ))}
           </Box>
+          {/* loader */}
+          {graphicsData.length ===0 && 
+          <div className="loaderWrapper"><div className="loader"></div></div>}
           <Typography variant="h3" sx={{color:"white", textAlign:"center", fontSize:{xs: "1.5rem", sm:"2.5rem"}}}>Completed Builds
             </Typography>
             <Typography variant="h6" sx={{color:"white", textAlign:"center", padding:"15px 0"}}>We provide part selection, pricing, and compatibility guidance for<br /> 
@@ -49,6 +52,8 @@ export function Home () {
                     View All Cpus</Button>
                 </Link>
           <HomeSection data={processorsData.slice(0,3) || []}/>
+          {processorsData.length ===0 && 
+          <div className="loaderWrapper"><div className="loader"></div></div>}
         </Box>
     
 }

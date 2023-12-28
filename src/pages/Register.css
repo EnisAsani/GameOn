@@ -1,0 +1,32 @@
+
+form {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+form p {
+    min-height: 25px;
+    padding: 0 0 0 2px;
+    color: red;
+    margin: 0;
+    width: 80%;
+}
+
+form input {
+    width: 80%;
+    height: 40px;
+    color: white;
+    padding: 0 0 0 10px;
+    background:#0d1321;
+    border-radius: 5px;
+    border: none;
+}
+
+
+
+
+
