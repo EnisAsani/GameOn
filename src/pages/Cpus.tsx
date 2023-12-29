@@ -20,6 +20,27 @@ export const Cpus = () => {
     const firstPostIndex = lastPostIndex - postPerPage
     const currentPosts = processorsData.slice(firstPostIndex, lastPostIndex)
 
+    let pages:number[] = []
+
+    for(let i=1; i <= Math.ceil(processorsData.length/postPerPage); i++) {
+        pages.push(i)
+    }
+
+    const moveToNextPage = ()=> {
+        if(currentPage === pages.length) {
+            return
+        }
+        setCurrentPage(prevPage => prevPage +1)
+    }
+    const moveToPrevPage = ()=> {
+        if(currentPage === 1) {
+            return
+        }
+        setCurrentPage(prevPage => prevPage -1)
+    }
+
+
+
     const handleSetCurrentPage = (page:number) => {
         setCurrentPage(page)
     }
@@ -48,6 +69,8 @@ export const Cpus = () => {
                 <ProcessorProduct key={cpu.id} {...cpu}/>
             ))}
         </Box>
-        <Pagination handleSetCurrentPage={handleSetCurrentPage} totalPosts={processorsData.length} postPerPage={postPerPage}/>
+        <Pagination handleSetCurrentPage={handleSetCurrentPage} 
+    moveToPrevPage={moveToPrevPage} moveToNextPage={moveToNextPage}
+    pages={pages} currentPage={currentPage}/>
     </React.Fragment>
 }
