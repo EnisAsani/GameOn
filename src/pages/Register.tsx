@@ -1,11 +1,12 @@
 import { Box, Button, Divider, Typography } from "@mui/material"
-import React from "react"
+import React,{useState} from "react"
 import { useNavigate } from "react-router-dom"
 import { RegisterUser } from "../services/authService"
 import {z, ZodType} from 'zod'
 import {useForm} from 'react-hook-form'
 import {zodResolver} from '@hookform/resolvers/zod'
 import './Register.css'
+import { Visibility, VisibilityOff } from "@mui/icons-material"
 
 export type FormData = {
     firstName: string
@@ -24,11 +25,7 @@ export type SubmitFormData = {
 
  const Register = () => {
     const navigate = useNavigate()
-    // const emailInput = useRef<any>()
-    // const passwordInput = useRef<any>()
-    // const FirstNameInput = useRef<any>()
-    // const LastNameInput = useRef<any>()
-
+    const [passwordVisible, setPasswordVisible] = useState(true)
     const schema:ZodType<FormData> = z.object({
         firstName: z.string().min(1,{message:'Field required'}),
         lastName: z.string().min(1,{message:'Field required'}),
@@ -71,7 +68,13 @@ export type SubmitFormData = {
         {errors.lastName &&  <p>{errors.lastName?.message}</p>}
         <input type="text" placeholder="Email" {...register('email')}/>
         {errors.email &&  <p>{errors.email?.message}</p>}
-        <input type="password" placeholder="Password" {...register('password')}/>
+        <div style={{display:'flex', width:'80%', alignItems:'center', justifyContent:'center', position:'relative'}}>
+        <input style={{flex:'6'}} type={passwordVisible ? 'text' : 'password'} placeholder="Password" {...register('password')}/>
+        {!passwordVisible && <Visibility onClick={()=> setPasswordVisible(prevVisible => !prevVisible)} 
+        sx={{color:'white', flex:'1', cursor:'pointer', position:'absolute', right:'5px'}}/>}
+        {passwordVisible && <VisibilityOff onClick={()=> setPasswordVisible(prevVisible => !prevVisible)} 
+        sx={{color:'white', flex:'1', cursor:'pointer', position:'absolute', right:'5px'}}/>}
+        </div>
         {errors.password &&  <p>{errors.password?.message}</p>}
         <Button type="submit" sx={{width:"80%", margin:"0 0 10px 0"}} variant="contained">Register</Button>
         <Typography variant="h5" color="white">Already a member? </Typography>

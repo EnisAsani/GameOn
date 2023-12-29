@@ -31,6 +31,25 @@ export const Pcus = () => {
     const firstPostIndex = lastPostIndex - postPerPage
     const currentPosts = pcProductsData.slice(firstPostIndex, lastPostIndex)
 
+    let pages:number[] = []
+
+    for(let i=1; i <= Math.ceil(pcProductsData.length/postPerPage); i++) {
+        pages.push(i)
+    }
+
+    const moveToNextPage = ()=> {
+        if(currentPage === pages.length) {
+            return
+        }
+        setCurrentPage(prevPage => prevPage +1)
+    }
+    const moveToPrevPage = ()=> {
+        if(currentPage === 1) {
+            return
+        }
+        setCurrentPage(prevPage => prevPage -1)
+    }
+
     const handleSetCurrentPage = (page:number) => {
         setCurrentPage(page)
     }
@@ -54,6 +73,8 @@ export const Pcus = () => {
                 <PcProduct key={cpu.id} {...cpu}/>
             ))}
     </Box>
-    <Pagination handleSetCurrentPage={handleSetCurrentPage} totalPosts={pcProductsData.length} postPerPage={postPerPage}/>
+    <Pagination handleSetCurrentPage={handleSetCurrentPage} 
+    moveToPrevPage={moveToPrevPage} moveToNextPage={moveToNextPage}
+    pages={pages} currentPage={currentPage}/>
     </Fragment>
 }
