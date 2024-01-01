@@ -20,6 +20,7 @@ const PcProduct = (props: Pcus) => {
         <Typography sx={{padding:"10px 0 0 0", lineHeight:"1.5rem"}} variant="h5" fontSize="1.4rem" color="white">{props.name}</Typography>
         <Typography variant="h6" fontSize=".8rem" color="white">GPU: {props.graphicCard.name}</Typography>
         <Typography variant="h6" fontSize=".8rem" color="white">CPU: {props.processor.name}</Typography>
+        <Typography variant="h6" fontSize=".8rem" color="white">CoreClock: {props.processor.coreClock}</Typography>
         <Typography variant="h6" fontSize=".9rem" color="white">Power: {props.powerSupply}</Typography>
         <Divider sx={{background:"white"}}/>
         <div style={{display:"flex", justifyContent:"space-between", alignItems:"center"}}>

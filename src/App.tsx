@@ -16,6 +16,7 @@ import Register from "./pages/Register"
 // const Register = lazy(()=> import('./pages/Register'))
 import { SignIn } from "./pages/SignIn"
 import { Pcus } from "./pages/Pcus"
+import Footer from "./components/Footer"
 import Pcu from "./pages/Pcu"
 
 function App() {
@@ -49,6 +50,7 @@ function App() {
           <Route path="/pcu/:pcuId" element={<Pcu />} />
         </Routes>
         </Box>
+        <Footer />
       </ShoppingCartProvider>
     </Fragment>
   )

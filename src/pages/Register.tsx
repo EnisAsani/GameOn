@@ -25,7 +25,7 @@ export type SubmitFormData = {
 
  const Register = () => {
     const navigate = useNavigate()
-    const [passwordVisible, setPasswordVisible] = useState(true)
+    const [passwordVisible, setPasswordVisible] = useState(false)
     const schema:ZodType<FormData> = z.object({
         firstName: z.string().min(1,{message:'Field required'}),
         lastName: z.string().min(1,{message:'Field required'}),

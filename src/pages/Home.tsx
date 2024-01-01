@@ -10,6 +10,8 @@ import { HomeSection } from "../components/HomeSection";
 import { GraphicCardProduct } from "../components/GraphicCardProduct";
 import { useShoppingCart } from "../context/ShoppingCartContext";
 import "../components/HomeSection.css"
+import PcProduct from "../components/PcProduct";
+import { Pcus } from "./Pcus";
 
 export function Home () {
 
@@ -22,7 +24,7 @@ export function Home () {
         price: number
     }
 
-    const { graphicsData, processorsData} = useShoppingCart()
+    const { graphicsData, processorsData, pcProductsData} = useShoppingCart()
 
     return <Box sx={{display: "flex", flexDirection:"column", 
         justifyContent:"center", 
@@ -34,6 +36,7 @@ export function Home () {
             do-it-yourself computer builders.
             </Typography>
             <Link style={{margin:"0 auto"}} to="/gpus"><Button sx={{padding:"10px 20px", }} variant="contained" startIcon={<Handyman />}>View All Cards</Button></Link>
+          {/* Graphic CARDS */}
           <Box className="productsDiv">
                 {graphicsData?.slice(0,3).map((guide: GraphicCardProps) => (
                     <GraphicCardProduct key={guide.id} {...guide}/>
@@ -51,8 +54,28 @@ export function Home () {
                 <Button sx={{padding:"10px 20px", }} variant="contained" startIcon={<Handyman />}>
                     View All Cpus</Button>
                 </Link>
+                {/* processors */}
           <HomeSection data={processorsData.slice(0,3) || []}/>
+                    {/* loader */}
           {processorsData.length ===0 && 
+          <div className="loaderWrapper"><div className="loader"></div></div>}
+    {/* Computers */}
+    <Typography variant="h3" sx={{color:"white", textAlign:"center", fontSize:{xs: "1.5rem", sm:"2.5rem"}}}>Personal Computers
+            </Typography>
+            <Typography variant="h6" sx={{color:"white", textAlign:"center", padding:"15px 0"}}>We provide part selection, pricing, and compatibility guidance for<br /> 
+            do-it-yourself computer builders.
+            </Typography>
+            <Link style={{margin:"0 auto"}} to="/pcus">
+                <Button sx={{padding:"10px 20px", }} variant="contained" startIcon={<Handyman />}>
+                    View All Pcs</Button>
+                </Link>
+    <Box className="productsDiv">
+                {pcProductsData?.slice(0,3).map((guide:Pcus) => (
+                    <PcProduct key={guide.id} {...guide}/>
+                ))}
+          </Box>
+                    {/* loader */}
+          {pcProductsData.length ===0 && 
           <div className="loaderWrapper"><div className="loader"></div></div>}
         </Box>
     

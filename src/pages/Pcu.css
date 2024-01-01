@@ -1,0 +1,55 @@
+.pcuWrapper {
+    padding: 30px 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.pcuWrapper_productImg {
+    min-height: 60vh;
+    flex: 1 1 25%;
+    max-width: 260px;
+    min-width: 255px;
+    display: flex;
+    flex-direction: column;
+    background: #495057;
+    border-radius: 10px;
+    overflow: hidden;
+
+}
+
+.pcuWrapper_productImg img {
+    aspect-ratio: 1/2;
+    border-radius: 10px 10px 0 0  ;
+    height: 450px;
+    cursor: pointer;
+}
+
+.pcuWrapper_productImg img:hover {
+    transform: scale(1.5);
+}
+
+.pcuWrapper_productImg_info {
+    padding: 10px 0 ;
+    border-radius: 0 0 10px 10px;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 15px;
+}
+
+.user_ratings {
+    padding: 0 0 20px 20px;
+}
+
+.pcuWrapper_specs {
+    padding: 30px 50px;
+    min-height: 50vh;
+    flex: 1 1 55%;
+    max-width: 55%;
+    min-width: 350px;
+}
+
+.pcuWrapper_specs h6 {
+    margin: 5px 0;
+}
