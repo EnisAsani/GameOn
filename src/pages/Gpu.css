@@ -1,11 +1,11 @@
-.pcuWrapper {
+.gpuWrapper {
     padding: 30px 50px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.pcuWrapper_productImg {
+.gpuWrapper_productImg {
     /* min-height: 60vh; */
     max-height: 90vh;
     flex: 1 1 25%;
@@ -20,18 +20,19 @@
 
 }
 
-.pcuWrapper_productImg img {
-    aspect-ratio: 1/2;
+.gpuWrapper_productImg img {
+    /* aspect-ratio: 1/2; */
     border-radius: 10px 10px 0 0  ;
     height: 450px;
     cursor: pointer;
+    /* object-fit: fill; */
 }
 
-.pcuWrapper_productImg img:hover {
+.gpuWrapper_productImg img:hover {
     transform: scale(1.5);
 }
 
-.pcuWrapper_productImg_info {
+.gpuWrapper_productImg_info {
     padding: 10px 0 ;
     border-radius: 0 0 10px 10px;
     display: flex;
@@ -40,11 +41,11 @@
     gap: 15px;
 }
 
-.user_ratings {
+.user_ratings_gpu {
     padding: 0 0 20px 20px;
 }
 
-.pcuWrapper_specs {
+.gpuWrapper_specs {
     padding: 30px 50px;
     min-height: 50vh;
     flex: 1 1 55%;
@@ -52,18 +53,18 @@
     min-width: 350px;
 }
 
-.pcuWrapper_specs h6 {
+.gpuWrapper_specs h6 {
     margin: 5px 0;
 }
 
-.similar_products {
-    height: 50vh;
+.similar_products_gpu {
+    height: 44vh;
     margin: 20px 0 0 0;
     overflow-y: hidden;
 
 }
 
-.similar_products_pcs {
+.similar_products_gpus {
     overflow-x: auto;
     max-width: 100%;
     display: flex;

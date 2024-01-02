@@ -5,6 +5,8 @@ import "./Pcu.css"
 import { LazyLoadImage } from "react-lazy-load-image-component"
 import { Button, Divider, Typography } from "@mui/material"
 import { Star } from "@mui/icons-material"
+import { useMemo } from "react"
+import PcProduct from "../components/PcProduct"
 
 const Pcu = () => {
     const {pcuId} = useParams()
@@ -14,6 +16,11 @@ const Pcu = () => {
     const {getItemQuantity, removeFromCart, increaseCartQuantity} = useShoppingCart()
     const pcId = foundPcu?.id || ''
     const quantity = getItemQuantity(foundPcu?.id || '')
+
+    const similarProducts = useMemo(()=> pcProductsData.slice(0,5),[pcProductsData]) ;
+    // console.log(similarProducts);
+    
+
   return (
     <div className="pcuWrapper">
         <div className="pcuWrapper_productImg">
@@ -47,6 +54,17 @@ const Pcu = () => {
         <Typography variant="h6" fontSize='1rem' fontWeight='600' color='white'>RAM: {foundPcu?.ram}Ghz</Typography>
         <Typography variant="h6" fontSize="1rem" fontWeight='600' color="white">Power: {foundPcu?.powerSupply}</Typography>
         <Typography variant="h6" fontSize="1rem" fontWeight='600' color="white">Price: ${foundPcu?.price.toFixed(2)}</Typography>
+
+        {/* similar products */}
+        <div className="similar_products">
+        <Typography variant="h6" fontSize='1.3rem' fontWeight='600' color='white'>Similar Products</Typography>
+        <Divider sx={{background:'white', width:'80%', margin:'10px 0'}}/>
+        <div className="similar_products_pcs">
+        {similarProducts.map(prod => (
+          <PcProduct {...prod} key={prod.id}/>
+        ))}
+        </div>
+        </div>
         </div>
     </div>
 
