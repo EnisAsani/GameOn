@@ -44,7 +44,7 @@ const Pcu = () => {
         {/* specifications */}
         <div className="pcuWrapper_specs">
         <Typography variant="h6" fontSize='1.3rem' fontWeight='600' color='white'>Specifications</Typography>
-        <Divider sx={{background:'white', width:'80%', margin:'10px 0'}}/>
+        <Divider sx={{background:'white', width:'100%', margin:'10px 0'}}/>
         <Typography variant="h6" fontSize='1rem' fontWeight='600' color='white'>{foundPcu?.name}</Typography>
         <Typography variant="h6" fontSize='1rem' fontWeight='600' color='white'>GPU: {foundPcu?.graphicCard.name}</Typography>
         <Typography variant="h6" fontSize='1rem' fontWeight='600' color='white'>Memory: {foundPcu?.graphicCard.memory} GB</Typography>
@@ -58,7 +58,7 @@ const Pcu = () => {
         {/* similar products */}
         <div className="similar_products">
         <Typography variant="h6" fontSize='1.3rem' fontWeight='600' color='white'>Similar Products</Typography>
-        <Divider sx={{background:'white', width:'80%', margin:'10px 0'}}/>
+        <Divider sx={{background:'white', width:'100%', margin:'10px 0'}}/>
         <div className="similar_products_pcs">
         {similarProducts.map(prod => (
           <PcProduct {...prod} key={prod.id}/>
