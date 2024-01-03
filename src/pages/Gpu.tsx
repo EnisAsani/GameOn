@@ -41,7 +41,7 @@ export const Gpu = () => {
         {/* specifications */}
         <div className="gpuWrapper_specs">
         <Typography variant="h6" fontSize='1.3rem' fontWeight='600' color='white'>Specifications</Typography>
-        <Divider sx={{background:'white', width:'80%', margin:'10px 0'}}/>
+        <Divider sx={{background:'white', width:'100%', margin:'10px 0'}}/>
         <Typography variant="h6" fontSize='1rem' fontWeight='600' color='white'>{foundGpu?.name}</Typography>
         <Typography variant="h6" fontSize='1rem' fontWeight='600' color='white'>{graphicBrand[foundGpu?.brand || 0].toUpperCase()}</Typography>
         <Typography variant="h6" fontSize='1rem' fontWeight='600' color='white'>Memory: {foundGpu?.memory}GB</Typography>
@@ -50,7 +50,7 @@ export const Gpu = () => {
         {/* similar products */}
         <div className="similar_products_gpu">
         <Typography variant="h6" fontSize='1.3rem' fontWeight='600' color='white'>Similar Products</Typography>
-        <Divider sx={{background:'white', width:'80%', margin:'10px 0'}}/>
+        <Divider sx={{background:'white', width:'100%', margin:'10px 0'}}/>
         <div className="similar_products_gpus">
         {similarProducts.map(prod => (
           <GraphicCardProduct {...prod} key={prod.id}/>

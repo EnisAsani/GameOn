@@ -7,9 +7,9 @@
 
 .prcWrapper_productImg {
     /* min-height: 60vh; */
-    max-height: 90vh;
+    max-height: 83vh;
     flex: 1 1 25%;
-    max-width: 260px;
+    max-width: 330px;
     min-width: 255px;
     display: flex;
     flex-direction: column;
@@ -21,9 +21,9 @@
 }
 
 .prcWrapper_productImg img {
-    /* aspect-ratio: 1/2; */
+    /* aspect-ratio: 16/9; */
     border-radius: 10px 10px 0 0  ;
-    height: 450px;
+    height: 400px;
     cursor: pointer;
     object-fit: cover;
 }
@@ -69,4 +69,21 @@
     max-width: 100%;
     display: flex;
     gap: 10px;
+}
+
+@media(max-width: 720px) {
+    .prcWrapper_productImg {
+        max-width: 90%;
+    }
+    .prcWrapper_specs {
+        max-width: 90%;
+        padding: 30px 10px;
+    }
+}
+
+@media(max-width: 640px) {
+    
+    .prcWrapper {
+        padding: 30px 10px;
+    }
 }

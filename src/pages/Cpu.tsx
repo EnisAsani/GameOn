@@ -43,7 +43,7 @@ export const Cpu = () => {
         {/* specifications */}
         <div className="prcWrapper_specs">
         <Typography variant="h6" fontSize='1.3rem' fontWeight='600' color='white'>Specifications</Typography>
-        <Divider sx={{background:'white', width:'80%', margin:'10px 0'}}/>
+        <Divider sx={{background:'white', width:'100%', margin:'10px 0'}}/>
         <Typography variant="h6" fontSize='1rem' fontWeight='600' color='white'>{foundCpu?.name}</Typography>
         <Typography variant="h6" fontSize='1rem' fontWeight='600' color='white'>{(processorEnum[foundCpu?.processorBrand || 0]).toUpperCase()}</Typography>
         <Typography variant="h6" fontSize='1rem' fontWeight='600' color='white'>CoreClock: {foundCpu?.coreClock} Ghz</Typography>
@@ -55,7 +55,7 @@ export const Cpu = () => {
         {/* similar products */}
         <div className="similar_products_prc">
         <Typography variant="h6" fontSize='1.3rem' fontWeight='600' color='white'>Similar Products</Typography>
-        <Divider sx={{background:'white', width:'80%', margin:'10px 0'}}/>
+        <Divider sx={{background:'white', width:'100%', margin:'10px 0'}}/>
         <div className="similar_products_prcs">
         {similarProducts.map(prod => (
           <ProcessorProduct {...prod} key={prod.id}/>

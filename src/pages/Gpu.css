@@ -9,7 +9,7 @@
     /* min-height: 60vh; */
     max-height: 90vh;
     flex: 1 1 25%;
-    max-width: 260px;
+    max-width: 330px;
     min-width: 255px;
     display: flex;
     flex-direction: column;
@@ -23,9 +23,9 @@
 .gpuWrapper_productImg img {
     /* aspect-ratio: 1/2; */
     border-radius: 10px 10px 0 0  ;
-    height: 450px;
+    height: 400px;
     cursor: pointer;
-    /* object-fit: fill; */
+    object-fit: cover;
 }
 
 .gpuWrapper_productImg img:hover {
@@ -69,4 +69,22 @@
     max-width: 100%;
     display: flex;
     gap: 10px;
+}
+
+
+@media(max-width: 720px) {
+    .gpuWrapper_productImg {
+        max-width: 90%;
+    }
+    .gpuWrapper_specs {
+        max-width: 90%;
+        padding: 30px 10px;
+    }
+}
+
+@media(max-width: 640px) {
+    
+    .gpuWrapper {
+        padding: 30px 10px;
+    }
 }
