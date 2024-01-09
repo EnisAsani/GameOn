@@ -8,10 +8,11 @@ import { Link } from "react-router-dom";
 import { HomeSection } from "../components/HomeSection";
 // import { useEffect, useState } from "react";
 import { GraphicCardProduct } from "../components/GraphicCardProduct";
-import { useShoppingCart } from "../context/ShoppingCartContext";
+// import { useShoppingCart } from "../context/ShoppingCartContext";
 import "../components/HomeSection.css"
 import PcProduct from "../components/PcProduct";
 import { Pcus } from "./Pcus";
+import { useData } from "../hooks/useData";
 
 export function Home () {
 
@@ -24,7 +25,9 @@ export function Home () {
         price: number
     }
 
-    const { graphicsData, processorsData, pcProductsData} = useShoppingCart()
+    // const { graphicsData, processorsData, pcProductsData} = useShoppingCart()
+
+    const {graphicCards, processors, computers} = useData()
 
     return <Box sx={{display: "flex", flexDirection:"column", 
         justifyContent:"center", 
@@ -38,12 +41,12 @@ export function Home () {
             <Link style={{margin:"0 auto"}} to="/gpus"><Button sx={{padding:"10px 20px", }} variant="contained" startIcon={<Handyman />}>View All Cards</Button></Link>
           {/* Graphic CARDS */}
           <Box className="productsDiv">
-                {graphicsData?.slice(0,3).map((guide: GraphicCardProps) => (
+                {graphicCards?.slice(0,3).map((guide: GraphicCardProps) => (
                     <GraphicCardProduct key={guide.id} {...guide}/>
                 ))}
           </Box>
           {/* loader */}
-          {graphicsData.length ===0 && 
+          {graphicCards.length ===0 && 
           <div className="loaderWrapper"><div className="loader"></div></div>}
           <Typography variant="h3" sx={{color:"white", textAlign:"center", fontSize:{xs: "1.5rem", sm:"2.5rem"}}}>Completed Builds
             </Typography>
@@ -55,9 +58,9 @@ export function Home () {
                     View All Cpus</Button>
                 </Link>
                 {/* processors */}
-          <HomeSection data={processorsData.slice(0,3) || []}/>
+          <HomeSection data={processors.slice(0,3) || []}/>
                     {/* loader */}
-          {processorsData.length ===0 && 
+          {processors.length ===0 && 
           <div className="loaderWrapper"><div className="loader"></div></div>}
     {/* Computers */}
     <Typography variant="h3" sx={{color:"white", textAlign:"center", fontSize:{xs: "1.5rem", sm:"2.5rem"}}}>Personal Computers
@@ -70,12 +73,12 @@ export function Home () {
                     View All Pcs</Button>
                 </Link>
     <Box className="productsDiv">
-                {pcProductsData?.slice(0,3).map((guide:Pcus) => (
+                {computers?.slice(0,3).map((guide:Pcus) => (
                     <PcProduct key={guide.id} {...guide}/>
                 ))}
           </Box>
                     {/* loader */}
-          {pcProductsData.length ===0 && 
+          {computers.length ===0 && 
           <div className="loaderWrapper"><div className="loader"></div></div>}
         </Box>
     

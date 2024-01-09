@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { ProductsHeader } from "../components/ProductsHeader";
 import { Box } from "@mui/material";
-import { useShoppingCart } from "../context/ShoppingCartContext";
+// import { useShoppingCart } from "../context/ShoppingCartContext";
 import { GraphicCardProduct } from "../components/GraphicCardProduct";
 import { Pagination } from "../components/Pagination";
+import { useData } from "../hooks/useData";
 
 export const GraphicCard = () => {
 
-    const {graphicsData} = useShoppingCart()
+    // const {graphicsData} = useShoppingCart()
+    const {graphicCards} = useData()
 
     const [inputValue, setInputValue] = useState("")
 
@@ -17,11 +19,11 @@ export const GraphicCard = () => {
     const postPerPage = 8
     const lastPostIndex = currentPage * postPerPage
     const firstPostIndex = lastPostIndex - postPerPage
-    const currentPosts = graphicsData.slice(firstPostIndex, lastPostIndex)
+    const currentPosts = graphicCards.slice(firstPostIndex, lastPostIndex)
 
     let pages:number[] = []
 
-    for(let i=1; i <= Math.ceil(graphicsData.length/postPerPage); i++) {
+    for(let i=1; i <= Math.ceil(graphicCards.length/postPerPage); i++) {
         pages.push(i)
     }
 
@@ -46,7 +48,7 @@ export const GraphicCard = () => {
     const handleInput = (value:string) => {
         setInputValue(value)
         if(value) {
-            const filtered = graphicsData.filter(item => item.name.toLowerCase().includes(value.toLowerCase()))
+            const filtered = graphicCards.filter(item => item.name.toLowerCase().includes(value.toLowerCase()))
         setFilteredData(filtered)
         } else {
             setFilteredData([])

@@ -1,6 +1,7 @@
 import { Button, Stack } from "react-bootstrap"
 import { useShoppingCart } from "../context/ShoppingCartContext"
 import { formatCurrency } from "../utilities/formatCurrency"
+import { useData } from "../hooks/useData"
 
 type CartItemProps = {
     id: string
@@ -8,8 +9,9 @@ type CartItemProps = {
 }
 
 export function CartItem({id, quantity}: CartItemProps) {
-    const {removeFromCart, processorsData, graphicsData, pcProductsData} = useShoppingCart()
-    const allItems:any[] = [...pcProductsData, ...processorsData, ...graphicsData]
+    const {removeFromCart} = useShoppingCart()
+    const {computers, graphicCards, processors} = useData()
+    const allItems:any[] = [...computers, ...processors, ...graphicCards]
     const item = allItems.find(item => item.id === id)
     const baseImgUrl = "/images/"
     if(item == null) return null

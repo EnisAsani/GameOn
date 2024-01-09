@@ -7,6 +7,7 @@ import { ProcessorProps } from "../components/ProcessorProduct"
 import { useShoppingCart } from "../context/ShoppingCartContext"
 import { ProductsHeader } from "../components/ProductsHeader"
 import { Pagination } from "../components/Pagination"
+import { useData } from "../hooks/useData"
 
 export type Pcus = {
     id: string
@@ -29,7 +30,9 @@ export const Pcus = () => {
     const postPerPage = 8
     const lastPostIndex = currentPage * postPerPage
     const firstPostIndex = lastPostIndex - postPerPage
-    const currentPosts = pcProductsData.slice(firstPostIndex, lastPostIndex)
+    const {computers} = useData()
+    const currentPosts = computers.slice(firstPostIndex, lastPostIndex)
+
 
     let pages:number[] = []
 
@@ -57,7 +60,7 @@ export const Pcus = () => {
     const handleInput = (value:string) => {
         setInputValue(value)
         if(value) {
-            const filtered = pcProductsData.filter(item => item.name.toLowerCase().includes(value.toLowerCase()))
+            const filtered = computers.filter(item => item.name.toLowerCase().includes(value.toLowerCase()))
         setFilteredData(filtered)
         } else {
             setFilteredData([])

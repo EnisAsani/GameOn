@@ -34,8 +34,8 @@ export type SubmitFormData = {
         max(32,{message:'Please do not enter more than 32 characters'})
     })
 
-    const {register, handleSubmit, formState: {errors}} = useForm<FormData>({resolver: zodResolver(schema)})
-
+    const {register, handleSubmit, formState: {errors}, formState:{isValid}} = useForm<FormData>({resolver: zodResolver(schema)})
+    
     const handleSubmitData = async (data:FormData)=> {
         console.log(data);
         const userData = {
@@ -68,15 +68,15 @@ export type SubmitFormData = {
         {errors.lastName &&  <p>{errors.lastName?.message}</p>}
         <input type="text" placeholder="Email" {...register('email')}/>
         {errors.email &&  <p>{errors.email?.message}</p>}
-        <div style={{display:'flex', width:'80%', alignItems:'center', justifyContent:'center', position:'relative'}}>
-        <input style={{flex:'6'}} type={passwordVisible ? 'text' : 'password'} placeholder="Password" {...register('password')}/>
+        <div style={{display:'flex', width:'100%', alignItems:'center', justifyContent:'center', position:'relative'}}>
+        <input type={passwordVisible ? 'text' : 'password'} placeholder="Password" {...register('password')}/>
         {!passwordVisible && <Visibility onClick={()=> setPasswordVisible(prevVisible => !prevVisible)} 
         sx={{color:'white', flex:'1', cursor:'pointer', position:'absolute', right:'5px'}}/>}
         {passwordVisible && <VisibilityOff onClick={()=> setPasswordVisible(prevVisible => !prevVisible)} 
         sx={{color:'white', flex:'1', cursor:'pointer', position:'absolute', right:'5px'}}/>}
         </div>
         {errors.password &&  <p>{errors.password?.message}</p>}
-        <Button type="submit" sx={{width:"80%", margin:"0 0 10px 0"}} variant="contained">Register</Button>
+        <Button disabled={!isValid} type="submit" sx={{width:"100%", margin:"10px 0 10px 0", '&:disabled':{color:'white'}}} variant="contained">Register</Button>
         <Typography variant="h5" color="white">Already a member? </Typography>
         </form>
         <Divider sx={{background:"white", width:"80%", margin:"0 0 5px 0"}}/>

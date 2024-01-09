@@ -1,29 +1,29 @@
 import { ReactNode, createContext, useContext, useState, useEffect } from "react";
 import { ShoppingCart } from "../components/ShoppingCart";
 import { useLocalStorage } from "../hooks/useLocalStorage";
-import { Pcus } from "../pages/Pcus";
-import axios from "axios";
+// import { Pcus } from "../pages/Pcus";
+// import axios from "axios";
 
 
-type GraphicCardProps = {
-    id:string
-    brand:number
-    name: string
-    imgUrl: string
-    memory: number
-    price: number
+// type GraphicCardProps = {
+//     id:string
+//     brand:number
+//     name: string
+//     imgUrl: string
+//     memory: number
+//     price: number
     
-}
+// }
 
-type ProcessorProps = {
-    id:string
-    processorBrand:number
-    name: string
-    imgUrl: string
-    coreClock: number
-    maxClock: number
-    price: number
-}
+// type ProcessorProps = {
+//     id:string
+//     processorBrand:number
+//     name: string
+//     imgUrl: string
+//     coreClock: number
+//     maxClock: number
+//     price: number
+// }
 
 type ShoppingCartProviderProps = {
     children: ReactNode
@@ -38,9 +38,9 @@ type ShoppingCartContext = {
     removeFromCart: (id: string) => void
     cartQuantity: number
     cartItems: CartItem[]
-    graphicsData: GraphicCardProps[]
-    processorsData:ProcessorProps[]
-    pcProductsData: Pcus[]
+    // graphicsData: GraphicCardProps[]
+    // processorsData:ProcessorProps[]
+    // pcProductsData: Pcus[]
     logOutUser: ()=> void
     logInUser: (user:any) => void
     activeUser:any
@@ -61,41 +61,41 @@ export function useShoppingCart() {
 
 export function ShoppingCartProvider({children} : ShoppingCartProviderProps) {
 
-    const [graphicsApi, setGraphicsApi] = useState<GraphicCardProps[] | []>([])
-    const [processorsApi, setProcessorsApi] = useState<ProcessorProps[] | []>([])
-    const [pcProducts, setPcProducts] = useState<Pcus[] | []>(()=>[])
+    // const [graphicsApi, setGraphicsApi] = useState<GraphicCardProps[] | []>([])
+    // const [processorsApi, setProcessorsApi] = useState<ProcessorProps[] | []>([])
+    // const [pcProducts, setPcProducts] = useState<Pcus[] | []>(()=>[])
     const [activeUser, setActiveUser] = useState<any>(null)
-    let isDataFetched = false;
+    // let isDataFetched = false;
 
 
-    const fetchGraphics = async () => {
-        const response = await axios.get("https://gameonapi.azurewebsites.net/api/graphiccard/getall")
-        // console.log(response);
+    // const fetchGraphics = async () => {
+    //     const response = await axios.get("https://gameonapi.azurewebsites.net/api/graphiccard/getall")
+    //     // console.log(response);
         
-        // const response = await axios.get('https://localhost:7122/api/GraphicCard/getall')
-        setGraphicsApi(response.data)
-     }
+    //     // const response = await axios.get('https://localhost:7122/api/GraphicCard/getall')
+    //     setGraphicsApi(response.data)
+    //  }
  
-     const fetchProcessors = async () => {
-         const response = await axios.get("https://gameonapi.azurewebsites.net/api/processor/getall")
-        //  console.log(response);
-        //  const response = await axios.get('https://localhost:7122/api/processor/getall')
-         setProcessorsApi(response.data)
-     }
+    //  const fetchProcessors = async () => {
+    //      const response = await axios.get("https://gameonapi.azurewebsites.net/api/processor/getall")
+    //     //  console.log(response);
+    //     //  const response = await axios.get('https://localhost:7122/api/processor/getall')
+    //      setProcessorsApi(response.data)
+    //  }
 
-     const fetchPcProducts = async () => {
-        const response = await axios.get('https://gameonapi.azurewebsites.net/api/pcproduct/getall')
-        setPcProducts(response.data)
-        // console.log(response.data);
-    }
+    //  const fetchPcProducts = async () => {
+    //     const response = await axios.get('https://gameonapi.azurewebsites.net/api/pcproduct/getall')
+    //     setPcProducts(response.data)
+    //     // console.log(response.data);
+    // }
 
-     const validateUserLoggedIn = () => {
-        if(localStorage.getItem('user')) {
-            const userData:any | null = JSON.parse(localStorage.getItem('user') || "")
-            // const isTokenValid = Date.now() > Date.parse(userData?.expires)
-            setActiveUser(userData);
-        } 
-     }
+    //  const validateUserLoggedIn = () => {
+    //     if(localStorage.getItem('user')) {
+    //         const userData:any | null = JSON.parse(localStorage.getItem('user') || "")
+    //         // const isTokenValid = Date.now() > Date.parse(userData?.expires)
+    //         setActiveUser(userData);
+    //     } 
+    //  }
 
     const logOutUser = () => {
         localStorage.removeItem('user');
@@ -109,16 +109,16 @@ export function ShoppingCartProvider({children} : ShoppingCartProviderProps) {
 
 
     useEffect(()=> {
-        
-        if(!isDataFetched){
-        fetchGraphics()
-        fetchProcessors()
-        fetchPcProducts()
-        validateUserLoggedIn()
         localStorage.removeItem("shopping-cart")
-        console.log('effect run')
-        isDataFetched = true
-    }
+        
+    //     if(!isDataFetched){
+    //     fetchGraphics()
+    //     fetchProcessors()
+    //     fetchPcProducts()
+    //     validateUserLoggedIn()
+    //     console.log('effect run')
+    //     isDataFetched = true
+    // }
      }
          ,[])
 
@@ -176,9 +176,8 @@ export function ShoppingCartProvider({children} : ShoppingCartProviderProps) {
     increaseCartQuantity,
      decreaseItemQuantity, removeFromCart, 
      cartItems, cartQuantity, openCart, closeCart,
-     graphicsData:graphicsApi, processorsData:processorsApi, 
      logOutUser, activeUser, logInUser, 
-     pcProductsData:pcProducts}}>
+     }}>
         {children}
         <ShoppingCart isOpen={isOpen}/>
     </ShoppingCartContext.Provider>

@@ -7,17 +7,19 @@ import { Button, Divider, Typography } from "@mui/material";
 import { Star } from "@mui/icons-material";
 import { processorEnum } from "../enums/processorEnum";
 import './Cpu.css'
+import { useData } from "../hooks/useData";
 
 export const Cpu = () => {
     const {cpuId} = useParams()
-    const { processorsData} = useShoppingCart()
-    const foundCpu = processorsData.find(item => item.id === cpuId)
+    // const { processorsData} = useShoppingCart()
+    const {processors} = useData()
+    const foundCpu = processors.find(item => item.id === cpuId)
     const baseImgUrl = "/images/";
     const {getItemQuantity, removeFromCart, increaseCartQuantity} = useShoppingCart()
     const pcId = foundCpu?.id || ''
     const quantity = getItemQuantity(foundCpu?.id || '')
 
-    const similarProducts = useMemo(()=> processorsData.slice(0,5),[processorsData]) ;
+    const similarProducts = useMemo(()=> processors.slice(0,5),[]) ;
 
 
     return (

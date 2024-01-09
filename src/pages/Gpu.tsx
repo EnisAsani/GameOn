@@ -7,17 +7,19 @@ import { Star } from "@mui/icons-material"
 import { graphicBrand } from "../enums/graphicCardEnum"
 import { LazyLoadImage } from "react-lazy-load-image-component"
 import "./Gpu.css"
+import { useData } from "../hooks/useData"
 
 export const Gpu = () => {
     const {gpuId} = useParams()
-    const { graphicsData} = useShoppingCart()
-    const foundGpu = graphicsData.find(item => item.id === gpuId)
+    // const { graphicsData} = useShoppingCart()
+    const {graphicCards} = useData()
+    const foundGpu = graphicCards.find(item => item.id === gpuId)
     const baseImgUrl = "/images/";
     const {getItemQuantity, removeFromCart, increaseCartQuantity} = useShoppingCart()
     const pcId = foundGpu?.id || ''
     const quantity = getItemQuantity(foundGpu?.id || '')
 
-    const similarProducts = useMemo(()=> graphicsData.slice(0,5),[graphicsData]) ;
+    const similarProducts = useMemo(()=> graphicCards.slice(0,5),[]) ;
     return (
         <div className="gpuWrapper">
         <div className="gpuWrapper_productImg">

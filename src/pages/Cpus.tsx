@@ -1,15 +1,16 @@
 import React, { useState } from "react"
 import { ProductsHeader } from "../components/ProductsHeader"
 import { Box } from "@mui/material"
-import { useShoppingCart } from "../context/ShoppingCartContext"
+// import { useShoppingCart } from "../context/ShoppingCartContext"
 import { ProcessorProduct } from "../components/ProcessorProduct"
 import { Pagination } from "../components/Pagination"
+import { useData } from "../hooks/useData"
 
 export const Cpus = () => {
 
 
-    const {processorsData} = useShoppingCart()
-
+    // const {processorsData} = useShoppingCart()
+    const {processors} = useData()
     const [inputValue, setInputValue] = useState("")
 
     const [filteredData, setFilteredData] = useState<any[]>([])
@@ -18,11 +19,11 @@ export const Cpus = () => {
     const postPerPage = 8
     const lastPostIndex = currentPage * postPerPage
     const firstPostIndex = lastPostIndex - postPerPage
-    const currentPosts = processorsData.slice(firstPostIndex, lastPostIndex)
+    const currentPosts = processors.slice(firstPostIndex, lastPostIndex)
 
     let pages:number[] = []
 
-    for(let i=1; i <= Math.ceil(processorsData.length/postPerPage); i++) {
+    for(let i=1; i <= Math.ceil(processors.length/postPerPage); i++) {
         pages.push(i)
     }
 
@@ -50,7 +51,7 @@ export const Cpus = () => {
         setInputValue(value)
         // const mapped = processorsData.map(item => item.name).filter(item => item.toLowerCase().includes(value.toLowerCase()))
         if(value) {
-            const filtered = processorsData.filter(item => item.name.toLowerCase().includes(value.toLowerCase()))
+            const filtered = processors.filter(item => item.name.toLowerCase().includes(value.toLowerCase()))
         setFilteredData(filtered)
         } else {
             setFilteredData([])

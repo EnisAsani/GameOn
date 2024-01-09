@@ -7,17 +7,20 @@ import { Button, Divider, Typography } from "@mui/material"
 import { Star } from "@mui/icons-material"
 import { useMemo } from "react"
 import PcProduct from "../components/PcProduct"
+import { useData } from "../hooks/useData"
 
 const Pcu = () => {
     const {pcuId} = useParams()
     const {pcProductsData} = useShoppingCart()
-    const foundPcu = pcProductsData.find(item => item.id === pcuId)
+    const {computers} = useData()
+
+    const foundPcu = computers.find(item => item.id === pcuId)
     const baseImgUrl = "/images/";
     const {getItemQuantity, removeFromCart, increaseCartQuantity} = useShoppingCart()
     const pcId = foundPcu?.id || ''
     const quantity = getItemQuantity(foundPcu?.id || '')
 
-    const similarProducts = useMemo(()=> pcProductsData.slice(0,5),[pcProductsData]) ;
+    const similarProducts = useMemo(()=> computers.slice(0,5),[]) ;
     // console.log(similarProducts);
     
 
