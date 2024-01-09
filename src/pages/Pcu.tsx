@@ -11,7 +11,7 @@ import { useData } from "../hooks/useData"
 
 const Pcu = () => {
     const {pcuId} = useParams()
-    const {pcProductsData} = useShoppingCart()
+    // const {pcProductsData} = useShoppingCart()
     const {computers} = useData()
 
     const foundPcu = computers.find(item => item.id === pcuId)

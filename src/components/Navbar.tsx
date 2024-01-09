@@ -8,6 +8,7 @@ import { useState } from "react";
 import { SearchData } from "./SearchData";
 import { BuildCircle, DesktopMac, Memory } from "@mui/icons-material"
 import { Link } from "react-router-dom"
+import { useData } from "../hooks/useData";
 
 export function Navbar (props:any) {
     // const [isProductDropdownOpen, setIsProductDropdownOpen] = useState<boolean>(false)
@@ -23,10 +24,11 @@ export function Navbar (props:any) {
 
    
 
-    const {openCart, cartQuantity, graphicsData, processorsData, pcProductsData} = useShoppingCart()
-    const mergedData = [...graphicsData, 
-        ...processorsData,
-        ...pcProductsData
+    const {openCart, cartQuantity} = useShoppingCart()
+    const {computers, processors, graphicCards} = useData()
+    const mergedData = [...graphicCards, 
+        ...processors,
+        ...computers
     ]
     
     const [inputVal, setInputVal] = useState<string>("")

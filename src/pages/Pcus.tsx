@@ -4,7 +4,7 @@ import PcProduct from '../components/PcProduct'
 import { useState, Fragment } from "react"
 import { GraphicCardProps } from "../components/GraphicCardProduct"
 import { ProcessorProps } from "../components/ProcessorProduct"
-import { useShoppingCart } from "../context/ShoppingCartContext"
+// import { useShoppingCart } from "../context/ShoppingCartContext"
 import { ProductsHeader } from "../components/ProductsHeader"
 import { Pagination } from "../components/Pagination"
 import { useData } from "../hooks/useData"
@@ -23,7 +23,7 @@ export type Pcus = {
     ram: number
 }
 export const Pcus = () => {
-    const {pcProductsData} = useShoppingCart()
+    // const {pcProductsData} = useShoppingCart()
     const [inputValue, setInputValue] = useState("")
     const [filteredData, setFilteredData] = useState<any[]>([])
     const [currentPage, setCurrentPage] = useState(1)
@@ -36,7 +36,7 @@ export const Pcus = () => {
 
     let pages:number[] = []
 
-    for(let i=1; i <= Math.ceil(pcProductsData.length/postPerPage); i++) {
+    for(let i=1; i <= Math.ceil(computers.length/postPerPage); i++) {
         pages.push(i)
     }
 
