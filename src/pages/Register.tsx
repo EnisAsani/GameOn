@@ -1,12 +1,15 @@
 import { Box, Button, Divider, Typography } from "@mui/material"
 import React,{useState} from "react"
 import { useNavigate } from "react-router-dom"
-import { RegisterUser } from "../services/authService"
+// import { RegisterUser } from "../services/authService"
 import {z, ZodType} from 'zod'
 import {useForm} from 'react-hook-form'
 import {zodResolver} from '@hookform/resolvers/zod'
 import './Register.css'
 import { Visibility, VisibilityOff } from "@mui/icons-material"
+import {  createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+// import {doc, setDoc} from "firebase/firestore"
+import {auth} from "../services/firebase"
 
 export type FormData = {
     firstName: string
@@ -26,6 +29,7 @@ export type SubmitFormData = {
  const Register = () => {
     const navigate = useNavigate()
     const [passwordVisible, setPasswordVisible] = useState(false)
+    
     const schema:ZodType<FormData> = z.object({
         firstName: z.string().min(1,{message:'Field required'}),
         lastName: z.string().min(1,{message:'Field required'}),
@@ -37,20 +41,35 @@ export type SubmitFormData = {
     const {register, handleSubmit, formState: {errors}, formState:{isValid}} = useForm<FormData>({resolver: zodResolver(schema)})
     
     const handleSubmitData = async (data:FormData)=> {
-        console.log(data);
-        const userData = {
-            "firstName": data.firstName,
-              "lastName": data.lastName,
-              "role": "user",
-              "email": data.email,
-              "password": data.password
+        // console.log(data);
+        // const userData = {
+        //     "firstName": data.firstName,
+        //       "lastName": data.lastName,
+        //       "role": "user",
+        //       "email": data.email,
+        //       "password": data.password
+        // }
+        try {
+            const res = await createUserWithEmailAndPassword(auth, data.email, data.password)
+            await updateProfile(res.user, {
+                displayName: data.firstName
+               })
+            // await setDoc(doc(db, "users", res.user.uid), {
+            //     uid:res.user.uid ,
+            //     firstName: data.firstName,
+            //     lastName:data.lastName ,
+            //     email: data.email,
+            //   })
+             navigate('/')
+        } catch (error) {
+            // console.log(error);
         }
-        const apiResponse =await RegisterUser(userData)
-        if(apiResponse.toLowerCase() === 'user created'){
-                        navigate('/signin')
-                    }else {
-                        console.log("something went wrong");
-                    }
+        // const apiResponse =await RegisterUser(userData)
+        // if(apiResponse.toLowerCase() === 'user created'){
+        //                 navigate('/signin')
+        //             }else {
+        //                 console.log("something went wrong");
+        //             }
     }
     return <React.Fragment>
     

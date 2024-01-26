@@ -1,16 +1,18 @@
 import { Alert, Box, Button, Divider, IconButton, Snackbar, Typography } from "@mui/material"
 import { useNavigate } from "react-router-dom"
 import { useRef } from "react"
-import { Login } from "../services/authService"
-import { useShoppingCart } from "../context/ShoppingCartContext"
+// import { Login } from "../services/authService"
+// import { useShoppingCart } from "../context/ShoppingCartContext"
 import { useState, Fragment } from "react"
 import { Close } from "@mui/icons-material"
+import {signInWithEmailAndPassword } from "firebase/auth";
+import {auth} from "../services/firebase"
 
 export const SignIn = () => {
     const navigate = useNavigate()
     const emailInput = useRef<any>()
     const passwordInput = useRef<any>()
-    const {logInUser} = useShoppingCart()
+    // const {logInUser} = useShoppingCart()
     const [openSnackBar, setOpenSnackBar] = useState(false);
 
     const action = (
@@ -28,18 +30,25 @@ export const SignIn = () => {
       );
 
     const handleLogin = async() => {
-            try {
-            const userLogin = {
-                "userName": emailInput.current.value,
-                "password": passwordInput.current.value
-            }
-            const apiResponse = await Login(userLogin);
-            logInUser(apiResponse)
-            navigate('/')
-        } 
-            catch (error:any){
-                setOpenSnackBar(true)
-            }
+        //     try {
+        //     const userLogin = {
+        //         "userName": emailInput.current.value,
+        //         "password": passwordInput.current.value
+        //     }
+        //     const apiResponse = await Login(userLogin);
+        //     logInUser(apiResponse)
+        //     navigate('/')
+        // } 
+        //     catch (error:any){
+        //         setOpenSnackBar(true)
+        //     }
+        try {
+          await signInWithEmailAndPassword(auth, emailInput.current.value, passwordInput.current.value)
+          navigate('/')
+         }
+         catch (err){
+          setOpenSnackBar(true)
+         }
     }
     return <Box sx={{display:"flex",alignItems:"center",justifyContent:"center", height:"90vh", flexDirection:"column"}}>
         <Typography sx={{padding:"0 0 20px 0"}} color="white" variant="h3">Your Account</Typography>

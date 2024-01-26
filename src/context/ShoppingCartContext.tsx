@@ -1,6 +1,9 @@
 import { ReactNode, createContext, useContext, useState, useEffect } from "react";
 import { ShoppingCart } from "../components/ShoppingCart";
 import { useLocalStorage } from "../hooks/useLocalStorage";
+import { onAuthStateChanged } from "firebase/auth";
+import {auth} from "../services/firebase"
+import { signOut } from 'firebase/auth'
 // import { Pcus } from "../pages/Pcus";
 // import axios from "axios";
 
@@ -67,6 +70,9 @@ export function ShoppingCartProvider({children} : ShoppingCartProviderProps) {
     const [activeUser, setActiveUser] = useState<any>(null)
     // let isDataFetched = false;
 
+    const logOutUser = () => {
+        signOut(auth)
+    }
 
     // const fetchGraphics = async () => {
     //     const response = await axios.get("https://gameonapi.azurewebsites.net/api/graphiccard/getall")
@@ -97,10 +103,7 @@ export function ShoppingCartProvider({children} : ShoppingCartProviderProps) {
     //     } 
     //  }
 
-    const logOutUser = () => {
-        localStorage.removeItem('user');
-        setActiveUser(null)
-    }
+   
 
     const logInUser = (user:any) => {
         localStorage.setItem("user", JSON.stringify(user))
@@ -109,7 +112,16 @@ export function ShoppingCartProvider({children} : ShoppingCartProviderProps) {
 
 
     useEffect(()=> {
-        localStorage.removeItem("shopping-cart")
+        const unsub = onAuthStateChanged(auth, (user) => {
+            setActiveUser(user)
+            // console.log(user);
+        })
+
+
+        return () => {
+            unsub()
+        }
+        // localStorage.removeItem("shopping-cart")
         
     //     if(!isDataFetched){
     //     fetchGraphics()
